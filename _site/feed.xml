@@ -1,21 +1,156 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-06-04T11:44:18-06:00</updated><id>http://localhost:4000/feed.xml</id><entry><title type="html">Bananas</title><link href="http://localhost:4000/2019/06/04/bananas.html" rel="alternate" type="text/html" title="Bananas" /><published>2019-06-04T00:00:00-06:00</published><updated>2019-06-04T00:00:00-06:00</updated><id>http://localhost:4000/2019/06/04/bananas</id><content type="html" xml:base="http://localhost:4000/2019/06/04/bananas.html">&lt;p&gt;A banana is an edible fruit – botanically a berry – produced by several kinds
-of large herbaceous flowering plants in the genus Musa.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-06-04T15:06:30-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">SUPERball v2 Documentation</title><subtitle>Basic Documentation for my current work on the SUPERball v2 Project.</subtitle><entry><title type="html">Omega2 Docker and Image Creation</title><link href="http://localhost:4000/sbv2/electronics/2019/06/04/Omega2_Docker_and_Image_Creation.html" rel="alternate" type="text/html" title="Omega2 Docker and Image Creation" /><published>2019-06-04T13:03:27-06:00</published><updated>2019-06-04T13:03:27-06:00</updated><id>http://localhost:4000/sbv2/electronics/2019/06/04/Omega2_Docker_and_Image_Creation</id><content type="html" xml:base="http://localhost:4000/sbv2/electronics/2019/06/04/Omega2_Docker_and_Image_Creation.html">&lt;p&gt;First you should install Docker. I am using ubuntu 18.04 LTS and installed docker-ce following &lt;a href=&quot;https://docs.docker.com/install/linux/docker-ce/ubuntu/&quot;&gt;these&lt;/a&gt; directions.&lt;/p&gt;
 
-&lt;p&gt;In some countries, bananas used for cooking may be called “plantains”,
-distinguishing them from dessert bananas. The fruit is variable in size, color,
-and firmness, but is usually elongated and curved, with soft flesh rich in
-starch covered with a rind, which may be green, yellow, red, purple, or brown
-when ripe.&lt;/p&gt;</content><author><name>jill</name></author><summary type="html">A banana is an edible fruit – botanically a berry – produced by several kinds of large herbaceous flowering plants in the genus Musa.</summary></entry><entry><title type="html">Apples</title><link href="http://localhost:4000/2019/06/03/apples.html" rel="alternate" type="text/html" title="Apples" /><published>2019-06-03T00:00:00-06:00</published><updated>2019-06-03T00:00:00-06:00</updated><id>http://localhost:4000/2019/06/03/apples</id><content type="html" xml:base="http://localhost:4000/2019/06/03/apples.html">&lt;p&gt;An apple is a sweet, edible fruit produced by an apple tree.&lt;/p&gt;
+&lt;p&gt;Once installed, you can follow the Omega2 Cross-compiling tutorial found here (though we will do some modification to the image, so don’t really follow the linked tutorial).&lt;/p&gt;
 
-&lt;p&gt;Apple trees are cultivated worldwide, and are the most widely grown species in
-the genus Malus. The tree originated in Central Asia, where its wild ancestor,
-Malus sieversii, is still found today. Apples have been grown for thousands of
-years in Asia and Europe, and were brought to North America by European
-colonists.&lt;/p&gt;</content><author><name>jill</name></author><summary type="html">An apple is a sweet, edible fruit produced by an apple tree.</summary></entry><entry><title type="html">Kiwifruit</title><link href="http://localhost:4000/2019/06/02/kiwifruit.html" rel="alternate" type="text/html" title="Kiwifruit" /><published>2019-06-02T00:00:00-06:00</published><updated>2019-06-02T00:00:00-06:00</updated><id>http://localhost:4000/2019/06/02/kiwifruit</id><content type="html" xml:base="http://localhost:4000/2019/06/02/kiwifruit.html">&lt;p&gt;Kiwifruit (often abbreviated as kiwi), or Chinese gooseberry is the edible
-berry of several species of woody vines in the genus Actinidia.&lt;/p&gt;
+&lt;p&gt;The basics I follow are:&lt;/p&gt;
 
-&lt;p&gt;The most common cultivar group of kiwifruit is oval, about the size of a large
-hen’s egg (5–8 cm (2.0–3.1 in) in length and 4.5–5.5 cm (1.8–2.2 in) in
-diameter). It has a fibrous, dull greenish-brown skin and bright green or
-golden flesh with rows of tiny, black, edible seeds. The fruit has a soft
-texture, with a sweet and unique flavor.&lt;/p&gt;</content><author><name>ted</name></author><summary type="html">Kiwifruit (often abbreviated as kiwi), or Chinese gooseberry is the edible berry of several species of woody vines in the genus Actinidia.</summary></entry></feed>
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker pull onion/omega2-source
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker run &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; onion/omega2-source /bin/bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This will pull the Omega2 docker image and then create a docker instance. The instance only needs to be created once, e.g. you execute “docker run” for every unique instance you want to create.&lt;/p&gt;
+
+&lt;p&gt;To exit docker, just type exit:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This will shutdown the docker instance you just created.&lt;/p&gt;
+
+&lt;p&gt;If you want to reconnect to the instance you created already, find the docker instance container ID, start that container, then attach the container to access the image.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker ps &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#this will look up all the containers on your machine and list them. Copy the container ID you want to load&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker start &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;CONTAINER ID]
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker attach &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;NAME]  &lt;span class=&quot;c&quot;&gt;#you can use tab complete to auto fill in the container name once it is started.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;After the attach command, you will be inside your docker image in your command line terminal.
+Note: you might have to press enter to see the terminal input.&lt;/p&gt;
+
+&lt;p&gt;As of June 2019, the Omega2 docker container initializes the git repo as lede-17.01. We want to be on the openwrt18.06 branch.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git checkout openwrt-18.06
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git pull
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This will switch us to the openwrt-18.06 branch as then pull the latest version.&lt;/p&gt;
+
+&lt;p&gt;Now we need to pull all the Omega2 specific “feeds” for our OpenWRT build process. Feeds are the way OpenWRT pulls sources files for particular drivers/programs/features that can be compiled into our image. Run this with in the /source folder (default start folder):&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bash scripts/onion-feed-setup.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This command will show you the version and build for the omega2 image:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;python scripts/onion-setup-build.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now we need to configure our image. Run the command below inside the /source folder (should be the default folder you start the container in):&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;make menuconfig
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you get a build dependency error like below:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Build dependency: Please &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;GNU &lt;span class=&quot;s1&quot;&gt;'time'&lt;/span&gt; or BusyBox &lt;span class=&quot;s1&quot;&gt;'time'&lt;/span&gt; that supports &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Run the following commands:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;apt-get update
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;apt-get &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;#This should fix the nodejs error you will get if you try to install time right after update&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install time&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;make menuconfig  &lt;span class=&quot;c&quot;&gt;#Run the config command again&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now you should have a terminal input window like so:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/main_menu.png&quot; alt=&quot;main menu&quot; title=&quot;Main Menu&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Note: The config menu should be setup for compile for our Omega2 boards. If not, then something didn’t initialize well in the previous steps. Either delete your container and create it again. Or try to hack. I recommend starting the container over.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Now navigate to “Network –&amp;gt;”, then “Routing and Redirection –&amp;gt;” and select “relayd” twice so that there is an astrix.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/relayd.png&quot; alt=&quot;Select Relayd&quot; title=&quot;Select Relayd&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, go back to the main menu screen and navigate to “Onion –&amp;gt;” then “Libraries –&amp;gt;”. Select the following:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;pyOnionGpio&lt;/li&gt;
+  &lt;li&gt;pyOnionI2C&lt;/li&gt;
+  &lt;li&gt;python-spidev&lt;/li&gt;
+  &lt;li&gt;python3-onioin-i2c&lt;/li&gt;
+  &lt;li&gt;python3-spidev&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Your window should look this this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/libraries.png&quot; alt=&quot;Select Libraries&quot; title=&quot;Select Libraries&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, from the main menu navigate to “Languages –&amp;gt;” then “ Python –&amp;gt;”. Select the follow (you will have to scroll to find them):&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;python-pip&lt;/li&gt;
+  &lt;li&gt;python-pyserial&lt;/li&gt;
+  &lt;li&gt;python3-pip&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I have the pip lines highlighted in the images below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/python_pip.png&quot; alt=&quot;Python2&quot; title=&quot;Select Python2 Libraries&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/python_pip3.png&quot; alt=&quot;Python3&quot; title=&quot;Select Python3 Pip&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This should complete our image customization and we can exit the config menu. Make sure you select yes when you exit to save your configuration.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/exit_menu.png&quot; alt=&quot;Exit&quot; title=&quot;Make sure to select &amp;lt; Yes &amp;gt;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now we can make our image.
+Note: this can take quite a long time. Especially on the first compile.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;make &lt;span class=&quot;nt&quot;&gt;-j&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Once this completes, you can run an onion provided script to rename the generated bin file. Run this from the /souce folder:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;python scripts/onion-setup-images.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;There should now be a file located in /source/bin/targets/ramips/mt76x8/ call “omega2-[version number]-[build number].bin”&lt;/p&gt;
+
+&lt;p&gt;To flash this .bin file onto the Omega2 board, you have several options. Since the file is located with in your Docker container, it is separate from your normal  file system. The quickest, though not easiest, would be to use curl’s file server feature. You can do this by using the following commands:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;curl &lt;span class=&quot;nt&quot;&gt;--upload-file&lt;/span&gt; ./[file name] https://transfer.sh/[file name]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;When writing this guide, my curl command was:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;curl &lt;span class=&quot;nt&quot;&gt;--upload-file&lt;/span&gt; ./omega2p-v0.3.2-b222.bin https://transfer.sh/omega2p-v0.3.2-b222.bin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here is the output from my Docker terminal:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/curl_transfer.png&quot; alt=&quot;Terminal Output&quot; title=&quot;Terminal Output&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Once this is complete, you will see a web address appended to the right of your terminal input line. You can now use wget on another computer to download the file. e.g.:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;wget https://transfer.sh/2aIYM/omega2p-v0.3.2-b222.bin  &lt;span class=&quot;c&quot;&gt;#This is the address I was using during the writing of this guide, copied from the terminal output from the image above.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you don’t have a working OS or internet access on the Omega2 board, you can wget the file onto a personal machine and upload the file using Onion’s USB instructions found &lt;a href=&quot;https://docs.onion.io/omega2-docs/Firmware-Flashing-from-USB-storage.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you have an onion board with a working OS and/or internet access, you can follow &lt;a href=&quot;https://docs.onion.io/omega2-docs/manual-firmware-installation.html&quot;&gt;this&lt;/a&gt; tutorial to update the OS to the version you just compiled. Instead of downloading  the bin from Onion’s website, use wget in the /tmp folder (or access the bin file from a USB drive).&lt;/p&gt;
+
+&lt;p&gt;You should now have an updated Omega2 board with our customized OS running the latest (at the time this guide was written) Omega OS version.&lt;/p&gt;</content><author><name></name></author><summary type="html">First you should install Docker. I am using ubuntu 18.04 LTS and installed docker-ce following these directions.</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2019/06/04/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2019-06-04T13:03:27-06:00</published><updated>2019-06-04T13:03:27-06:00</updated><id>http://localhost:4000/jekyll/update/2019/06/04/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2019/06/04/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry></feed>
