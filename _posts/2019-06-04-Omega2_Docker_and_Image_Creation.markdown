@@ -2,7 +2,7 @@
 layout: post
 title:  "Omega2 Docker and Image Creation"
 date:   2019-06-04 13:03:27 -0600
-categories: SBv2 Electronics
+tags: SBv2 Omega2
 ---
 First you should install Docker. I am using ubuntu 18.04 LTS and installed docker-ce following [these][docker-docs] directions.
 
