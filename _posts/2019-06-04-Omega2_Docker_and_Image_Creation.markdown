@@ -151,9 +151,11 @@ Once this is complete, you will see a web address appended to the right of your 
 $ wget https://transfer.sh/2aIYM/omega2p-v0.3.2-b222.bin  #This is the address I was using during the writing of this guide, copied from the terminal output from the image above.
 ```
 
+If you have an onion board with a working OS and/or internet access, you can follow [this][onion-manual] tutorial to update the OS to the version you just compiled. Instead of downloading the bin from Onion's website, use wget (demonstrated above) in the /tmp folder (or access the bin file from an SD card or USB drive, if possible).
+
 If you don't have a working OS or internet access on the Omega2 board, you can wget the file onto a personal machine and upload the file using Onion's USB instructions found [here][onion-usb].
 
-If you have an onion board with a working OS and/or internet access, you can follow [this][onion-manual] tutorial to update the OS to the version you just compiled. Instead of downloading  the bin from Onion's website, use wget in the /tmp folder (or access the bin file from a USB drive).
+> USB instructions only work if you are using the Omega2 expansion board. You might be able to use an SD card, but this will require some hacking since no guide exists (yet).
 
 You should now have an updated Omega2 board with our customized OS running the latest (at the time this guide was written) Omega OS version.
 

@@ -1,4 +1,95 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="https://jeb12345.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://jeb12345.github.io/" rel="alternate" type="text/html" /><updated>2019-06-05T09:51:02-06:00</updated><id>https://jeb12345.github.io/feed.xml</id><title type="html">SUPERball v2 Documentation</title><subtitle>Basic Documentation for my current work on the SUPERball v2 Project.</subtitle><entry><title type="html">Omega2 Docker and Image Creation</title><link href="https://jeb12345.github.io/2019/06/04/Omega2_Docker_and_Image_Creation.html" rel="alternate" type="text/html" title="Omega2 Docker and Image Creation" /><published>2019-06-04T13:03:27-06:00</published><updated>2019-06-04T13:03:27-06:00</updated><id>https://jeb12345.github.io/2019/06/04/Omega2_Docker_and_Image_Creation</id><content type="html" xml:base="https://jeb12345.github.io/2019/06/04/Omega2_Docker_and_Image_Creation.html">&lt;p&gt;First you should install Docker. I am using ubuntu 18.04 LTS and installed docker-ce following &lt;a href=&quot;https://docs.docker.com/install/linux/docker-ce/ubuntu/&quot;&gt;these&lt;/a&gt; directions.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-06-06T10:52:55-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">SUPERball v2 Documentation</title><subtitle>Basic Documentation for my current work on the SUPERball v2 Project.</subtitle><entry><title type="html">Omega2 Swap File and Storage Expansion</title><link href="http://localhost:4000/2019/06/06/Omega2_Swap_and_Storage_Expansion.html" rel="alternate" type="text/html" title="Omega2 Swap File and Storage Expansion" /><published>2019-06-06T09:47:27-06:00</published><updated>2019-06-06T09:47:27-06:00</updated><id>http://localhost:4000/2019/06/06/Omega2_Swap_and_Storage_Expansion</id><content type="html" xml:base="http://localhost:4000/2019/06/06/Omega2_Swap_and_Storage_Expansion.html"></content><author><name></name></author><category term="SBv2" /><category term="Omega2" /><summary type="html"></summary></entry><entry><title type="html">Omega2 Bridging WiFi and Ethernet</title><link href="http://localhost:4000/2019/06/05/Omega2_Briding_WiFi_and_Ethernet.html" rel="alternate" type="text/html" title="Omega2 Bridging WiFi and Ethernet" /><published>2019-06-05T10:34:27-06:00</published><updated>2019-06-05T10:34:27-06:00</updated><id>http://localhost:4000/2019/06/05/Omega2_Briding_WiFi_and_Ethernet</id><content type="html" xml:base="http://localhost:4000/2019/06/05/Omega2_Briding_WiFi_and_Ethernet.html">&lt;blockquote&gt;
+  &lt;p&gt;If you have not done so, you need to have the SBv2 custom image loaded onto you Omega2 board. Or at the very least, an image with &lt;b&gt;relayd&lt;/b&gt; installed.
+You can find instructions on compiling and loading the custom image &lt;a href=&quot;/2019/06/04/Omega2_Docker_and_Image_Creation.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Note that these configurations might already be applied to your system if a custom version of our firmware is / was already installed on the Omega2 board. Check the network and wireless files on you system against the final version in this tutorial.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;We will be editing the Omega2’s configuration files to enable briding between the WiFi and ethernet port.
+The files we will be editing are &lt;code class=&quot;highlighter-rouge&quot;&gt;network&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;wireless&lt;/code&gt; located in &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/config/&lt;/code&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Please refer to &lt;a href=&quot;https://docs.onion.io/omega2-docs/&quot;&gt;Onion’s Omega2&lt;/a&gt; docs for how to connect to your Omega2 board, commands, and features. I would recommend you connect to the Omega2 through the Command Line interface.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;network-file&quot;&gt;Network File&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/config/network&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;An unmodified network file should look something like this:
+&lt;img src=&quot;/assets/img/network_original.png&quot; alt=&quot;original network&quot; title=&quot;original network file&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Leave the &lt;code class=&quot;highlighter-rouge&quot;&gt;'loopback'&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;'globals'&lt;/code&gt; configurations and change the rest of the file to look something like this:
+&lt;img src=&quot;/assets/img/network_modified.png&quot; alt=&quot;modified network&quot; title=&quot;modified network file&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Note that you might need to change your &lt;code class=&quot;highlighter-rouge&quot;&gt;gateway&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;dns&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;ipaddr&lt;/code&gt; settings to match your network’s settings.
+Also, the &lt;code class=&quot;highlighter-rouge&quot;&gt;option hostname &quot;Omega-&quot;&lt;/code&gt; might have a 4 character string. No need to delete it like in the image above.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Here are the configurations if you feel like copy and pasting them into your file:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;config interface &lt;span class=&quot;s1&quot;&gt;'lan'&lt;/span&gt;
+        option ifname &lt;span class=&quot;s1&quot;&gt;'eth0'&lt;/span&gt;
+        option proto &lt;span class=&quot;s1&quot;&gt;'static'&lt;/span&gt;
+        option gateway &lt;span class=&quot;s1&quot;&gt;'192.168.0.1'&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# Should be your network's default Gateway  &lt;/span&gt;
+        option dns &lt;span class=&quot;s1&quot;&gt;'192.168.0.1'&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# Should be your network's default Gateway&lt;/span&gt;
+
+config interface &lt;span class=&quot;s1&quot;&gt;'wwan'&lt;/span&gt;
+        option ifname &lt;span class=&quot;s1&quot;&gt;'apcli0'&lt;/span&gt;
+        option proto &lt;span class=&quot;s1&quot;&gt;'dhcp'&lt;/span&gt;
+        option &lt;span class=&quot;nb&quot;&gt;hostname&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Omega-'&lt;/span&gt;
+
+config interface &lt;span class=&quot;s1&quot;&gt;'stabridge'&lt;/span&gt;
+        option proto &lt;span class=&quot;s1&quot;&gt;'relay'&lt;/span&gt;
+        option network &lt;span class=&quot;s1&quot;&gt;'lan wwan'&lt;/span&gt;
+        option ipaddr &lt;span class=&quot;s1&quot;&gt;'192.168.0.140'&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#TODO: check if this needs to change for each Omega2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;wireless-file-optional&quot;&gt;Wireless File (optional)&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/config/wireless&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;An unmodified wireless file should look something like this:
+&lt;img src=&quot;/assets/img/wireless_original.png&quot; alt=&quot;original wireless&quot; title=&quot;original wireless file&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If you already connected your Omega2 board to a network, then your &lt;code class=&quot;highlighter-rouge&quot;&gt;'sta'&lt;/code&gt; section might already be pre-populated with your network settings.&lt;/p&gt;
+
+&lt;p&gt;If not, then populate your netowrk settings (key and ssid) as well as make sure you change&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;option disable '1'&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;option disable '0'&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Your new wireless file should look something like this:
+&lt;img src=&quot;/assets/img/wireless_modified.png&quot; alt=&quot;modified wireless&quot; title=&quot;modified wireless file&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Note the &lt;code class=&quot;highlighter-rouge&quot;&gt;config wif-config&lt;/code&gt; sections are usually auto generated by the wifi manager. So you might have one or more of these for each different WiFi network you have connected with your Omega2 board.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;enable-relayd&quot;&gt;Enable Relayd&lt;/h3&gt;
+&lt;p&gt;Once you have modified the &lt;code class=&quot;highlighter-rouge&quot;&gt;network&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;wireless&lt;/code&gt; files, relayd needs to be enabled.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;/etc/init.d/relayd enabled
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This should setup relayd to bridge your WiFi and ethernet port.&lt;/p&gt;
+
+&lt;h3 id=&quot;disable-firewall&quot;&gt;Disable Firewall&lt;/h3&gt;
+&lt;p&gt;Once relayd is setup and we have a bridge between our WiFi and ethernet, Hebi feedback messages might not be working. This is due to the Omega2’s firewall blocking traffic.
+The easiest way to solve this is to disable the firewall all together.&lt;/p&gt;
+
+&lt;p&gt;The firmware’s startup scripts are located in &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/init.d/&lt;/code&gt; and there should be file named &lt;code class=&quot;highlighter-rouge&quot;&gt;firewall&lt;/code&gt;.
+Disable this file using the command below:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;/etc/init.d/firewall disable
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For good measure (though probably not necessary), I also remove the file’s execute permission.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chmod&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-x&lt;/span&gt; /etc/init.d/firewall
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Now if you reboot the Omega2 board, it should startup and allow for Hebi’s feedback messages to transfer over the network.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Note: The feedback messages will take approximately 85 seconds (or the time for all startup scripts to finish) before they are recognized on the network. So be patient on initial boot up.&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name></name></author><category term="SBv2" /><category term="Omega2" /><summary type="html">If you have not done so, you need to have the SBv2 custom image loaded onto you Omega2 board. Or at the very least, an image with relayd installed. You can find instructions on compiling and loading the custom image here.</summary></entry><entry><title type="html">Omega2 Docker and Image Creation</title><link href="http://localhost:4000/2019/06/04/Omega2_Docker_and_Image_Creation.html" rel="alternate" type="text/html" title="Omega2 Docker and Image Creation" /><published>2019-06-04T13:03:27-06:00</published><updated>2019-06-04T13:03:27-06:00</updated><id>http://localhost:4000/2019/06/04/Omega2_Docker_and_Image_Creation</id><content type="html" xml:base="http://localhost:4000/2019/06/04/Omega2_Docker_and_Image_Creation.html">&lt;p&gt;First you should install Docker. I am using ubuntu 18.04 LTS and installed docker-ce following &lt;a href=&quot;https://docs.docker.com/install/linux/docker-ce/ubuntu/&quot;&gt;these&lt;/a&gt; directions.&lt;/p&gt;
 
 &lt;p&gt;Once installed, you can follow the Omega2 Cross-compiling tutorial found here (though we will do some modification to the image, so don’t really follow the linked tutorial).&lt;/p&gt;
 
@@ -137,20 +228,12 @@ Note: this can take quite a long time. Especially on the first compile.&lt;/p&gt
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;wget https://transfer.sh/2aIYM/omega2p-v0.3.2-b222.bin  &lt;span class=&quot;c&quot;&gt;#This is the address I was using during the writing of this guide, copied from the terminal output from the image above.&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;p&gt;If you have an onion board with a working OS and/or internet access, you can follow &lt;a href=&quot;https://docs.onion.io/omega2-docs/manual-firmware-installation.html&quot;&gt;this&lt;/a&gt; tutorial to update the OS to the version you just compiled. Instead of downloading the bin from Onion’s website, use wget (demonstrated above) in the /tmp folder (or access the bin file from an SD card or USB drive, if possible).&lt;/p&gt;
+
 &lt;p&gt;If you don’t have a working OS or internet access on the Omega2 board, you can wget the file onto a personal machine and upload the file using Onion’s USB instructions found &lt;a href=&quot;https://docs.onion.io/omega2-docs/Firmware-Flashing-from-USB-storage.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;If you have an onion board with a working OS and/or internet access, you can follow &lt;a href=&quot;https://docs.onion.io/omega2-docs/manual-firmware-installation.html&quot;&gt;this&lt;/a&gt; tutorial to update the OS to the version you just compiled. Instead of downloading  the bin from Onion’s website, use wget in the /tmp folder (or access the bin file from a USB drive).&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;USB instructions only work if you are using the Omega2 expansion board. You might be able to use an SD card, but this will require some hacking since no guide exists (yet).&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;You should now have an updated Omega2 board with our customized OS running the latest (at the time this guide was written) Omega OS version.&lt;/p&gt;</content><author><name></name></author><category term="SBv2" /><category term="Omega2" /><summary type="html">First you should install Docker. I am using ubuntu 18.04 LTS and installed docker-ce following these directions.</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="https://jeb12345.github.io/jekyll/update/2019/06/04/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2019-06-04T13:03:27-06:00</published><updated>2019-06-04T13:03:27-06:00</updated><id>https://jeb12345.github.io/jekyll/update/2019/06/04/welcome-to-jekyll</id><content type="html" xml:base="https://jeb12345.github.io/jekyll/update/2019/06/04/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
-
-&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
-
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry></feed>
+&lt;p&gt;You should now have an updated Omega2 board with our customized OS running the latest (at the time this guide was written) Omega OS version.&lt;/p&gt;</content><author><name></name></author><category term="SBv2" /><category term="Omega2" /><summary type="html">First you should install Docker. I am using ubuntu 18.04 LTS and installed docker-ce following these directions.</summary></entry></feed>
