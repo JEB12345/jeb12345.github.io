@@ -92,7 +92,7 @@ Finally, add these lines to `/etc/rc.local` between the instuctions at the top a
 ### Start dnsmasq on bootup
 /etc/init.d/dnsmasq start
 /etc/init.d/firewall stop
-/etc/init.ddnsmasq restart
+/etc/init.d/dnsmasq restart
 ```
 
 
