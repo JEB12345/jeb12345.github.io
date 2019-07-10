@@ -1,4 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-06-06T10:52:55-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">SUPERball v2 Documentation</title><subtitle>Basic Documentation for my current work on the SUPERball v2 Project.</subtitle><entry><title type="html">Omega2 Swap File and Storage Expansion</title><link href="http://localhost:4000/2019/06/06/Omega2_Swap_and_Storage_Expansion.html" rel="alternate" type="text/html" title="Omega2 Swap File and Storage Expansion" /><published>2019-06-06T09:47:27-06:00</published><updated>2019-06-06T09:47:27-06:00</updated><id>http://localhost:4000/2019/06/06/Omega2_Swap_and_Storage_Expansion</id><content type="html" xml:base="http://localhost:4000/2019/06/06/Omega2_Swap_and_Storage_Expansion.html"></content><author><name></name></author><category term="SBv2" /><category term="Omega2" /><summary type="html"></summary></entry><entry><title type="html">Omega2 Bridging WiFi and Ethernet</title><link href="http://localhost:4000/2019/06/05/Omega2_Briding_WiFi_and_Ethernet.html" rel="alternate" type="text/html" title="Omega2 Bridging WiFi and Ethernet" /><published>2019-06-05T10:34:27-06:00</published><updated>2019-06-05T10:34:27-06:00</updated><id>http://localhost:4000/2019/06/05/Omega2_Briding_WiFi_and_Ethernet</id><content type="html" xml:base="http://localhost:4000/2019/06/05/Omega2_Briding_WiFi_and_Ethernet.html">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-10T11:16:25-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">SUPERball v2 Documentation</title><subtitle>Basic Documentation for my current work on the SUPERball v2 Project.</subtitle><entry><title type="html">Schematic For SUPERball v2</title><link href="http://localhost:4000/2019/06/14/Schematic_SUPERball.html" rel="alternate" type="text/html" title="Schematic For SUPERball v2" /><published>2019-06-14T09:22:22-06:00</published><updated>2019-06-14T09:22:22-06:00</updated><id>http://localhost:4000/2019/06/14/Schematic_SUPERball</id><content type="html" xml:base="http://localhost:4000/2019/06/14/Schematic_SUPERball.html">&lt;h2 id=&quot;revision-c---teensy-mod&quot;&gt;Revision C - Teensy Mod&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;You can find the git repo for SUPERball v2 &lt;a href=&quot;https://github.com/JEB12345/superball_v2_electronics/tree/Onion_Teensy_M0&quot;&gt;here&lt;/a&gt;, which houses the schematics and board files for each version of our custom electronics board. Note that this page refers to the “Onion_Teensy_M0” branch. This may or may not be merged with master at some point in the future.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The project was developed on &lt;a href=&quot;http://www.kicad-pcb.org/&quot;&gt;KiCAD&lt;/a&gt; v6 as of the writing of this document.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This is the third revision of our electronics board for wireless communication and battery power distribution on SUPERball v2. The first and second boards were design steps which each had different issues that made them unusable on the full system. Below is a 3D rendering of the board generated in KiCAD.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/main_3D_combined.png&quot; alt=&quot;3D Board&quot; title=&quot;Top/Bottom Rendering of SBv2 Electronics Board&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;overview&quot;&gt;Overview&lt;/h3&gt;
+
+&lt;p&gt;Below is a simple (and crude) overview of the schematic connections for the electronics board. The main features are:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Battery Monitoring using TI’s &lt;a href=&quot;https://www.ti.com/lit/ds/symlink/bq76930.pdf&quot;&gt;&lt;strong&gt;bq76930&lt;/strong&gt;&lt;/a&gt; chip for power and individual cell monitoring of our 6S battery pack&lt;/li&gt;
+  &lt;li&gt;Step down power from pack voltage to 5V then from 5V to 3.3V using TI’s &lt;a href=&quot;http://www.ti.com/lit/ds/symlink/lmzm23601.pdf&quot;&gt;&lt;strong&gt;lmzm23601&lt;/strong&gt;&lt;/a&gt; and &lt;a href=&quot;https://www.ti.com/lit/ds/symlink/lp3965.pdf&quot;&gt;&lt;strong&gt;lp3965&lt;/strong&gt;&lt;/a&gt;, respectively.&lt;/li&gt;
+  &lt;li&gt;Main real time communication and processing using a &lt;a href=&quot;https://www.pjrc.com/teensy/teensyLC.html&quot;&gt;&lt;strong&gt;Teensy LC&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Onion’s &lt;a href=&quot;https://docs.onion.io/omega2-docs/omega2p.html&quot;&gt;&lt;strong&gt;Omega2p&lt;/strong&gt;&lt;/a&gt; as our WiFi to Ethernet bridge and ROS node
+    &lt;ul&gt;
+      &lt;li&gt;Serial to USB communication for debugging for the Omeag2p was based on Omega’s &lt;a href=&quot;https://github.com/OnionIoT/Onion-Hardware/blob/master/Schematics/Omega-Expansion-Dock.pdf&quot;&gt;schematics&lt;/a&gt; using Silicon Labs’ &lt;a href=&quot;http://www.silabs.com/support%20documents/technicaldocs/cp2102n-datasheet.pdf&quot;&gt;&lt;strong&gt;CP2102N&lt;/strong&gt;&lt;/a&gt; chip.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Wireless safety switch utilizing a custom layout of Nordic’s &lt;a href=&quot;https://www.sparkfun.com/datasheets/Components/nRF24L01_prelim_prod_spec_1_2.pdf&quot;&gt;&lt;strong&gt;nRF24L01p&lt;/strong&gt;&lt;/a&gt; chip controlled by a dedicated &lt;a href=&quot;http://ww1.microchip.com/downloads/en/DeviceDoc/SAMD21-Family-DataSheet-DS40001882D.pdf&quot;&gt;&lt;strong&gt;ATSAMD21E&lt;/strong&gt;&lt;/a&gt; M0 micro controller.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/SBv2_Electronics_Diagram.png&quot; alt=&quot;Crude Electrical Diagram&quot; title=&quot;Electrical Diagram&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="SBv2" /><category term="Electronics" /><summary type="html">Revision C - Teensy Mod You can find the git repo for SUPERball v2 here, which houses the schematics and board files for each version of our custom electronics board. Note that this page refers to the “Onion_Teensy_M0” branch. This may or may not be merged with master at some point in the future.</summary></entry><entry><title type="html">Omega2 Bridging WiFi and Ethernet</title><link href="http://localhost:4000/2019/06/05/Omega2_Briding_WiFi_and_Ethernet.html" rel="alternate" type="text/html" title="Omega2 Bridging WiFi and Ethernet" /><published>2019-06-05T10:34:27-06:00</published><updated>2019-06-05T10:34:27-06:00</updated><id>http://localhost:4000/2019/06/05/Omega2_Briding_WiFi_and_Ethernet</id><content type="html" xml:base="http://localhost:4000/2019/06/05/Omega2_Briding_WiFi_and_Ethernet.html">&lt;blockquote&gt;
   &lt;p&gt;If you have not done so, you need to have the SBv2 custom image loaded onto you Omega2 board. Or at the very least, an image with &lt;b&gt;relayd&lt;/b&gt; installed.
 You can find instructions on compiling and loading the custom image &lt;a href=&quot;/2019/06/04/Omega2_Docker_and_Image_Creation.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -73,6 +101,11 @@ config interface &lt;span class=&quot;s1&quot;&gt;'stabridge'&lt;/span&gt;
 
 &lt;p&gt;This should setup relayd to bridge your WiFi and ethernet port.&lt;/p&gt;
 
+&lt;h3 id=&quot;enable-dnsmasq&quot;&gt;Enable dnsmasq&lt;/h3&gt;
+&lt;p&gt;Now you should make sure dnsmasq is enabled&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;/etc/init.d/dnsmasq enabled
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;h3 id=&quot;disable-firewall&quot;&gt;Disable Firewall&lt;/h3&gt;
 &lt;p&gt;Once relayd is setup and we have a bridge between our WiFi and ethernet, Hebi feedback messages might not be working. This is due to the Omega2’s firewall blocking traffic.
 The easiest way to solve this is to disable the firewall all together.&lt;/p&gt;
@@ -82,9 +115,13 @@ Disable this file using the command below:&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;/etc/init.d/firewall disable
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;For good measure (though probably not necessary), I also remove the file’s execute permission.&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;chmod&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-x&lt;/span&gt; /etc/init.d/firewall
+&lt;p&gt;Finally, add these lines to &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/rc.local&lt;/code&gt; between the instuctions at the top and &lt;code class=&quot;highlighter-rouge&quot;&gt;exit 0&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;### Start dnsmasq on bootup&lt;/span&gt;
+/etc/init.d/dnsmasq start
+/etc/init.d/firewall stop
+/etc/init.d/dnsmasq restart
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;p&gt;Now if you reboot the Omega2 board, it should startup and allow for Hebi’s feedback messages to transfer over the network.&lt;/p&gt;
 
 &lt;blockquote&gt;
