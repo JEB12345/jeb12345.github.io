@@ -25,6 +25,8 @@ Below is a simple (and crude) overview of the schematic connections for the elec
 
 ![Crude Electrical Diagram](/assets/img/SBv2_Electronics_Diagram.png "Electrical Diagram")
 
+PDFs of the actual KiCAD schematics can be found in the GitHub repo [here][PDFs].
+
 [Electronics Github]: https://github.com/JEB12345/superball_v2_electronics/tree/Onion_Teensy_M0
 [KiCAD]: http://www.kicad-pcb.org/
 [bq76930]: https://www.ti.com/lit/ds/symlink/bq76930.pdf
@@ -36,3 +38,4 @@ Below is a simple (and crude) overview of the schematic connections for the elec
 [cp2102n]: http://www.silabs.com/support%20documents/technicaldocs/cp2102n-datasheet.pdf
 [nRF24]: https://www.sparkfun.com/datasheets/Components/nRF24L01_prelim_prod_spec_1_2.pdf
 [atsamd21e]: http://ww1.microchip.com/downloads/en/DeviceDoc/SAMD21-Family-DataSheet-DS40001882D.pdf
+[PDFs]: https://github.com/JEB12345/superball_v2_electronics/tree/Onion_Teensy_M0/main_board/PDFs
