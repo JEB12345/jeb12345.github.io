@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-10T11:16:25-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">SUPERball v2 Documentation</title><subtitle>Basic Documentation for my current work on the SUPERball v2 Project.</subtitle><entry><title type="html">Schematic For SUPERball v2</title><link href="http://localhost:4000/2019/06/14/Schematic_SUPERball.html" rel="alternate" type="text/html" title="Schematic For SUPERball v2" /><published>2019-06-14T09:22:22-06:00</published><updated>2019-06-14T09:22:22-06:00</updated><id>http://localhost:4000/2019/06/14/Schematic_SUPERball</id><content type="html" xml:base="http://localhost:4000/2019/06/14/Schematic_SUPERball.html">&lt;h2 id=&quot;revision-c---teensy-mod&quot;&gt;Revision C - Teensy Mod&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-11T15:20:27-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">SUPERball v2 Documentation</title><subtitle>Basic Documentation for my current work on the SUPERball v2 Project.</subtitle><entry><title type="html">Schematic and Layout For SUPERball v2</title><link href="http://localhost:4000/2019/07/01/Schematic_and_Layout_SUPERball.html" rel="alternate" type="text/html" title="Schematic and Layout For SUPERball v2" /><published>2019-07-01T09:22:22-06:00</published><updated>2019-07-01T09:22:22-06:00</updated><id>http://localhost:4000/2019/07/01/Schematic_and_Layout_SUPERball</id><content type="html" xml:base="http://localhost:4000/2019/07/01/Schematic_and_Layout_SUPERball.html">&lt;h2 id=&quot;revision-c---teensy-mod&quot;&gt;Revision C - Teensy Mod&lt;/h2&gt;
 &lt;blockquote&gt;
   &lt;p&gt;You can find the git repo for SUPERball v2 &lt;a href=&quot;https://github.com/JEB12345/superball_v2_electronics/tree/Onion_Teensy_M0&quot;&gt;here&lt;/a&gt;, which houses the schematics and board files for each version of our custom electronics board. Note that this page refers to the “Onion_Teensy_M0” branch. This may or may not be merged with master at some point in the future.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -11,7 +11,7 @@
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/main_3D_combined.png&quot; alt=&quot;3D Board&quot; title=&quot;Top/Bottom Rendering of SBv2 Electronics Board&quot; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;overview&quot;&gt;Overview&lt;/h3&gt;
+&lt;h3 id=&quot;schematic-overview&quot;&gt;Schematic Overview&lt;/h3&gt;
 
 &lt;p&gt;Below is a simple (and crude) overview of the schematic connections for the electronics board. The main features are:&lt;/p&gt;
 &lt;ul&gt;
@@ -26,7 +26,65 @@
   &lt;li&gt;Wireless safety switch utilizing a custom layout of Nordic’s &lt;a href=&quot;https://www.sparkfun.com/datasheets/Components/nRF24L01_prelim_prod_spec_1_2.pdf&quot;&gt;&lt;strong&gt;nRF24L01p&lt;/strong&gt;&lt;/a&gt; chip controlled by a dedicated &lt;a href=&quot;http://ww1.microchip.com/downloads/en/DeviceDoc/SAMD21-Family-DataSheet-DS40001882D.pdf&quot;&gt;&lt;strong&gt;ATSAMD21E&lt;/strong&gt;&lt;/a&gt; M0 micro controller.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/img/SBv2_Electronics_Diagram.png&quot; alt=&quot;Crude Electrical Diagram&quot; title=&quot;Electrical Diagram&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="SBv2" /><category term="Electronics" /><summary type="html">Revision C - Teensy Mod You can find the git repo for SUPERball v2 here, which houses the schematics and board files for each version of our custom electronics board. Note that this page refers to the “Onion_Teensy_M0” branch. This may or may not be merged with master at some point in the future.</summary></entry><entry><title type="html">Omega2 Bridging WiFi and Ethernet</title><link href="http://localhost:4000/2019/06/05/Omega2_Briding_WiFi_and_Ethernet.html" rel="alternate" type="text/html" title="Omega2 Bridging WiFi and Ethernet" /><published>2019-06-05T10:34:27-06:00</published><updated>2019-06-05T10:34:27-06:00</updated><id>http://localhost:4000/2019/06/05/Omega2_Briding_WiFi_and_Ethernet</id><content type="html" xml:base="http://localhost:4000/2019/06/05/Omega2_Briding_WiFi_and_Ethernet.html">&lt;blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/SBv2_Electronics_Diagram.png&quot; alt=&quot;Crude Electrical Diagram&quot; title=&quot;Electrical Diagram&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;PDFs of the actual KiCAD schematics can be found in the GitHub repo &lt;a href=&quot;https://github.com/JEB12345/superball_v2_electronics/tree/Onion_Teensy_M0/main_board/PDFs&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;layout-overview&quot;&gt;Layout overview&lt;/h3&gt;
+
+&lt;p&gt;The layout of the board has some unique constraints based on the design of SUPERball v2’s Omni-directional holder and location of the board. The main driving parameter of the Omni-directional holder design was to make a strong an lightweight component, electronic form factor, IC component placement, and mounting were then driven by these design choices. The main constraints driven are:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The board must allow for access to the batter compartment, thus a center cutout on the board.&lt;/li&gt;
+  &lt;li&gt;All through-hole parts must be mounted on the top (SOFTBALL) side of the board or within the flaired cavities if they are mounted on the bottom, so that they do not interfere with the function of the Omni-directional routers.&lt;/li&gt;
+  &lt;li&gt;The SOFTBALL end effector limits the amount the board may extend beyond the Omni-directional holder to 100mm in diameter.&lt;/li&gt;
+  &lt;li&gt;At least a 3mm gap is needed between the electronic board’s edge and the Omni-directional holder to allow for a 3D printed cover to seal the electronics from outdoor elements.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The design of the electronic board layout taking into account these contraints my be seen in the image below. The white outline is a 2D projection of the top of an Omni-directional holder. the yellow is the board outline.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/Layout_with_Omni_Outline.png&quot; alt=&quot;full layout&quot; title=&quot;All layers displayed with Omni Holder Outline&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Note that the board was designed as a 4 layer PCB board with the top and bottom layers as signal layers and the middle two layers as power planes. The first middle layer is positive power and the second is ground.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;top-of-the-board-and-top-layer&quot;&gt;Top of the Board and Top layer&lt;/h3&gt;
+
+&lt;p&gt;The top of the electronics board houses the Omega2p, Teensy LC, nRF24L01P, 2.4 GHz antennas, step down converters for 5 and 3.3 volts, communication connector to the SOFTBALL sensor and String LEDs, as well as the buzzer.&lt;/p&gt;
+
+&lt;p&gt;Technically, the ethernet port is also mounted on this side. However, the port housing goes through a hole in the board and the connection is on the bottom side.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/Main_Board_Top_with_Text.png&quot; alt=&quot;Top Render with Text&quot; title=&quot;3D render of electronic board top with Omega and Teensy&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Some ICs are located under the Omega and Teensy boards, which are shown in the image below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/Main_Board_Top_noOmegaTeensy_with_Text.png&quot; alt=&quot;Top Render noOmegaTeensy with Text&quot; title=&quot;3D render of electronic board top without the Omega and Teensy boards&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Below is a rendering of the actual PCB layout for the top layer with Silkscreen.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/layout_top.png&quot; alt=&quot;Top Copper Layer&quot; title=&quot;PCB layout of Top Copper Layer with Top Silkscreen&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;middle-layers&quot;&gt;Middle layers&lt;/h3&gt;
+
+&lt;p&gt;The middle layers going towards the bottom layer from the top are a power plane and a ground plane, respectively, and are shown as such below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/layout_power.png&quot; alt=&quot;Power Plane&quot; title=&quot;PCB layout of Power Plane Copper Layer&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/layout_ground.png&quot; alt=&quot;Ground Plane&quot; title=&quot;PCB layout of Ground Plane Copper Layer&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Note the missing copper pours around the 2.4 GHz antennas at the end of the board. This is done to prevent noise and reflections from the pours from interfering with the wireless signals.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;bottom-of-the-board-and-bottom-layer&quot;&gt;Bottom of the Board and Bottom layer&lt;/h3&gt;
+
+&lt;p&gt;The bottom of the electronics board houses the battery monitor circuit, battery power connector, Hebi power connectors, the entry for the Ethernet connector, sensor board connector, M0 microcontroller with SWD programming connector, as well as a backup 3.3 volt input connector.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/Main_Board_Bottom_with_Text.png&quot; alt=&quot;Bottom Render with Text&quot; title=&quot;3D render of electronic board bottom&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The majority of these connectors are grouped to fit within the “flared” openings on the Omni-directional holder, which can be seen in the PCB copper layout render below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/layout_bottom.png&quot; alt=&quot;Bottom Copper Layer&quot; title=&quot;PCB layout of Bottom Copper Layer&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="SBv2" /><category term="Electronics" /><summary type="html">Revision C - Teensy Mod You can find the git repo for SUPERball v2 here, which houses the schematics and board files for each version of our custom electronics board. Note that this page refers to the “Onion_Teensy_M0” branch. This may or may not be merged with master at some point in the future.</summary></entry><entry><title type="html">Omega2 Bridging WiFi and Ethernet</title><link href="http://localhost:4000/2019/06/05/Omega2_Briding_WiFi_and_Ethernet.html" rel="alternate" type="text/html" title="Omega2 Bridging WiFi and Ethernet" /><published>2019-06-05T10:34:27-06:00</published><updated>2019-06-05T10:34:27-06:00</updated><id>http://localhost:4000/2019/06/05/Omega2_Briding_WiFi_and_Ethernet</id><content type="html" xml:base="http://localhost:4000/2019/06/05/Omega2_Briding_WiFi_and_Ethernet.html">&lt;blockquote&gt;
   &lt;p&gt;If you have not done so, you need to have the SBv2 custom image loaded onto you Omega2 board. Or at the very least, an image with &lt;b&gt;relayd&lt;/b&gt; installed.
 You can find instructions on compiling and loading the custom image &lt;a href=&quot;/2019/06/04/Omega2_Docker_and_Image_Creation.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
