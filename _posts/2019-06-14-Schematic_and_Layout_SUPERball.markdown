@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "Schematic and Layout For SUPERball v2"
+title:  "Schematic and Layout For Electronics Board Revision 3"
 date:   2019-07-01 09:22:22 -0600
 tags: SBv2 Electronics
 ---
-## Revision C - Teensy Mod
+## Revision 3 - Teensy Mod
 > You can find the git repo for SUPERball v2 [here][Electronics Github], which houses the schematics and board files for each version of our custom electronics board. Note that this page refers to the "Onion_Teensy_M0" branch. This may or may not be merged with master at some point in the future.
 
 > The project was developed on [KiCAD] v6 as of the writing of this document.
@@ -65,7 +65,7 @@ The middle layers going towards the bottom layer from the top are a power plane 
 
 ![Ground Plane](/assets/img/layout_ground.png "PCB layout of Ground Plane Copper Layer")
 
-> Note the missing copper pours around the 2.4 GHz antennas at the end of the board. This is done to prevent noise and reflections from the pours from interfering with the wireless signals.
+> Note the missing copper pours around the 2.4 GHz antennas at the end of the board. This is done to prevent noise and reflections from interfering with the wireless signals.
 
 ### Bottom of the Board and Bottom layer
 
