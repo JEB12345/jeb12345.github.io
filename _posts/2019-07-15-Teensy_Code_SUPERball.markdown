@@ -84,15 +84,15 @@ Serial communication, specifically two wire [UART][uart], was chosen as the meth
 
 On top of the Serial communication, a [COBS][cobs] encoding protocol library (PacketSerial) is used to allow for arbitrary length data packets across the asynchronous communication lines. Please refer to the arduino library's [GitHub page][packetserial] for a good write up on how and why this is used.
 
-In order to get data from the Teensy, the Omega2p board will send a simple 1 Byte command corresponding to a predetermined data type. The Teensy will then reply with current data for the commanded data type. This is very similar to how most IC sensor chips relay data to a host microcontroller.
+In order to get data from the Teensy, the Omega2p board will send a simple 1 Byte command corresponding to a predetermined data type (using a COBS compatible protocol, e.g. pySerial + cobs). The Teensy will then reply with current data for the commanded data type. This is very similar to how most IC sensor chips relay data to a host microcontroller.
 
 Below are some data commands:
 
 Omega2p Command (1 byte) | Data Requested | Bytes Sent from Teensy
 :---: | :---: | :---:
-`0x01` | Battery Voltage & Current | 4 (2 voltage + 2 current)
+`0x01` | Battery Voltage & Current | 4<br/>(2-voltage + 2-current)
 `0x14`  | Dummy Command | 2
-`0xFF`  | Battery Management shutdown | 0
+`0xFF`  | Battery Management Shutdown | 0
 
 > As of writing this document, frame work for commands has been setup but only a battery voltage/current data command, BMS shutdown, and a dummy command have been implemented (the actual byte commands are subject to change). I will update the page as new commands are set.
 
