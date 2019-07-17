@@ -77,6 +77,8 @@ The majority of these connectors are grouped to fit within the "flared" openings
 
 ![Bottom Copper Layer](/assets/img/layout_bottom.png "PCB layout of Bottom Copper Layer")
 
+> Note: The 3D render and the CAD copper render are flipped from each other. When using PCB CAD programs, they will render the bottom layer as viewed from the top layer. This is looking at it with all other layers above removed. 
+
 [Electronics Github]: https://github.com/JEB12345/superball_v2_electronics/tree/Onion_Teensy_M0
 [KiCAD]: http://www.kicad-pcb.org/
 [bq76930]: https://www.ti.com/lit/ds/symlink/bq76930.pdf
