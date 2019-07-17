@@ -40,13 +40,13 @@ Using Arduino and Teensyduino allows for a multitude of open source libraries to
 * [IntervalTimer][intervaltimer], interrupt based library to call a function at some microsecond based interval
 * [PacketSerial][packetserial], packet-based serial communication using the [COBS][cobs] encoding format
 * [OctoWS2811][octows2811], high performance library for various single wire chain-able RGB LEDs
-* [bq769x0 Arduino Library (modified)][bq769x0 Library], This is the original code, however we use a heavily modified variant to support the Teensy's faster I2C library and CRC checking. Our version is packaged with the Project's source code
+* [bq769x0 Arduino Library (modified)][bq769x0 Library], This is the original code, however we use a heavily modified variant to support the Teensy's faster I2C library and CRC checking. Our version is [packaged with the Project's source code][bq769x0CRC]
 
 ### Timing loop
 
- As stated earlier, most functions will run at a 10ms (100Hz) timing loop. A simple custom library called **timer** initializes an **IntervalTimer** instance and calls a function to increase a counter every 10ms. The main loop of our program then checks to see if the previously saved count is not equal to the current count (set by our interrupt timing function). If valid, then the main loop will run. Functions that should run slower than 10ms (at 10ms intervals) should use a conditional modulo statement on the current 10ms count.
+ As stated earlier, most functions will run at a 10ms (100Hz) timing loop. A simple custom library called [**timer**][timer] initializes an **IntervalTimer** instance and calls a function to increase a counter every 10ms. The main loop of our program then checks to see if the previously saved count is not equal to the current count (set by our interrupt timing function). If valid, then the main loop will run. Functions that should run slower than 10ms (at 10ms intervals) should use a conditional modulo statement on the current 10ms count.
 
- Below is a sample of our main loop blinking and LED every 500ms:
+ Below is a sample of our main loop blinking an LED every 500ms:
 
  ```rust
  void loop() {
@@ -54,8 +54,9 @@ Using Arduino and Teensyduino allows for a multitude of open source libraries to
    * Everythin in this if statement will run at 10ms
    * Make sure all tasks take less than 10ms
    * If you want to run something slower than 10ms,
-   * create and if statement and modulo systime with
-   * the ms delay you want the task to run
+   * create an if statement and modulo systime with
+   * the multiple of 10ms delay you want the task to run
+   * e.g. if(timer_state.systime % 50 == 0) for a 500ms loop
    */
   if(timer_state.systime != timer_state.prev_systime) {
     noInterrupts();
@@ -70,10 +71,30 @@ Using Arduino and Teensyduino allows for a multitude of open source libraries to
   }
   /*
    * Put tasks that should run as fast as possible here
+   * Limit this to only a few tasks if possible
    */
   else {
   }
+}
  ```
+
+### Serial communication
+
+Serial communication, specifically two wire [UART][uart], was chosen as the method to relay data to our Omega2p board since both SPI and I2C had various complications rendering them not as useful as Serial.
+
+On top of the Serial communication, a [COBS][cobs] encoding protocol library (PacketSerial) is used to allow for arbitrary length data packets across the asynchronous communication lines. Please refer to the arduino library's [GitHub page][packetserial] for a good write up on how and why this is used.
+
+In order to get data from the Teensy, the Omega2p board will send a simple 1 Byte command corresponding to a predetermined data type. The Teensy will then reply with current data for the commanded data type. This is very similar to how most IC sensor chips relay data to a host microcontroller.
+
+Below are some data commands:
+
+Omega2p Command (1 byte) | Data Requested | Bytes Sent from Teensy
+:---: | :---: | :---:
+`0x01` | Battery Voltage & Current | 4 (2 voltage + 2 current)
+`0x14`  | Dummy Command | 2
+`0xFF`  | Battery Management shutdown | 0
+
+> As of writing this document, frame work for commands has been setup but only a battery voltage/current data command, BMS shutdown, and a dummy command have been implemented (the actual byte commands are subject to change). I will update the page as new commands are set.
 
 [teensyLC]: https://www.pjrc.com/teensy/teensyLC.html
 [Schematic and Layout]: {% post_url 2019-06-14-Schematic_and_Layout_SUPERball %}
@@ -88,3 +109,6 @@ Using Arduino and Teensyduino allows for a multitude of open source libraries to
 [intervaltimer]: https://www.pjrc.com/teensy/td_timing_IntervalTimer.html
 [octows2811]: https://www.pjrc.com/teensy/td_libs_OctoWS2811.html
 [bq769x0 Library]: https://github.com/LibreSolar/bq769x0_ArduinoLibrary
+[timer]: https://github.com/JEB12345/TeensyLC_SBv2/blob/master/src/timer.cpp
+[bq769x0CRC]: https://github.com/JEB12345/TeensyLC_SBv2/blob/master/src/bq769x0CRC.cpp
+[uart]: https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter
