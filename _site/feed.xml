@@ -1,4 +1,89 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-17T15:16:37-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">SUPERball v2 Documentation</title><subtitle>Basic Documentation for my current work on the SUPERball v2 Project.</subtitle><entry><title type="html">Teensy Code Overview</title><link href="http://localhost:4000/2019/07/15/Teensy_Code_SUPERball.html" rel="alternate" type="text/html" title="Teensy Code Overview" /><published>2019-07-15T00:00:22-06:00</published><updated>2019-07-15T00:00:22-06:00</updated><id>http://localhost:4000/2019/07/15/Teensy_Code_SUPERball</id><content type="html" xml:base="http://localhost:4000/2019/07/15/Teensy_Code_SUPERball.html">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-24T15:33:53-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">SUPERball v2 Documentation</title><subtitle>Basic Documentation for my current work on the SUPERball v2 Project.</subtitle><entry><title type="html">NTRT SUPERball Model</title><link href="http://localhost:4000/2019/07/24/NTRT_SUPERball_Model.html" rel="alternate" type="text/html" title="NTRT SUPERball Model" /><published>2019-07-24T00:00:22-06:00</published><updated>2019-07-24T00:00:22-06:00</updated><id>http://localhost:4000/2019/07/24/NTRT_SUPERball_Model</id><content type="html" xml:base="http://localhost:4000/2019/07/24/NTRT_SUPERball_Model.html">&lt;blockquote&gt;
+  &lt;p&gt;This document assumes the reader has a basic understanding of &lt;a href=&quot;http://www.cplusplus.com/doc/tutorial/&quot;&gt;C++&lt;/a&gt;, &lt;a href=&quot;https://git-scm.com/&quot;&gt;Git&lt;/a&gt;, and &lt;a href=&quot;https://ntrtsim.readthedocs.io/en/latest/yaml-model-builder.html&quot;&gt;YAML&lt;/a&gt;. Some functions will be explained, but not all concepts or features will be. If you want more information, please refer to the their respective links.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;ntrt&quot;&gt;NTRT&lt;/h2&gt;
+
+&lt;p&gt;The NASA Tensegrity Robotics Toolkit (NTRT) is a collection of software modules for the modeling, simulation, and control of Tensegrity Robots. The NTRT Simulator is a tensegrity-specific simulator built to run ontop of the Bullet Physics Engine, version 2.82.&lt;/p&gt;
+
+&lt;p&gt;Basic documentation on installation and functionality can be found &lt;a href=&quot;https://ntrtsim.readthedocs.io/en/latest/&quot;&gt;here&lt;/a&gt;. I recommend starting here if you have never installed NTRT before.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;NTRT only works on Linux. There is a VM image you can use. However, I find that a local install on a Linux OS increases your development time significantly. Alternatively, you can install NTRT on a windows 10 machine through &lt;a href=&quot;https://itsfoss.com/install-bash-on-windows/&quot;&gt;Windows Subsystem for Linux (WSL)&lt;/a&gt; and follow the “installing NTRT without a vertual machine” instructions &lt;a href=&quot;https://ntrtsim.readthedocs.io/en/latest/setup.html#installing-ntrt-without-a-virtual-machine&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;NTRT’s source code my be found on GitHub, &lt;a href=&quot;https://github.com/NASA-Tensegrity-Robotics-Toolkit/NTRTsim&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;superball-v2-ntrt-model&quot;&gt;SUPERball v2 NTRT model&lt;/h3&gt;
+
+&lt;p&gt;Once you have NTRT installed and running, you will need to change the git NTRTsim branch to “SBv2_model”. You can do this by running the git command within any of the NTRTsim git folders.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git checkout SBv2_model
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You can check to see which branch you on by using the &lt;code class=&quot;highlighter-rouge&quot;&gt;git status&lt;/code&gt; command. You should get an output like the one below:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git status
+On branch SBv2_model
+Your branch is up to &lt;span class=&quot;nb&quot;&gt;date &lt;/span&gt;with &lt;span class=&quot;s1&quot;&gt;'origin/SBv2_model'&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+
+Untracked files:
+  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;use &lt;span class=&quot;s2&quot;&gt;&quot;git add &amp;lt;file&amp;gt;...&quot;&lt;/span&gt; to include &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;what will be committed&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+nothing added to commit but untracked files present &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;use &lt;span class=&quot;s2&quot;&gt;&quot;git add&quot;&lt;/span&gt; to track&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Once on the SBv2_model branch, navigate to the model’s source code located in &lt;code class=&quot;highlighter-rouge&quot;&gt;NTRTsim/src/dev/jbruce/SBv2/&lt;/code&gt;. Here you should find the actual files that generate and load the SUPERball v2 NTRT model using the YAML builder.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Information and documentation on NTRT’s YAML builder can be found &lt;a href=&quot;https://ntrtsim.readthedocs.io/en/latest/yaml-model-builder.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;These should be the basic files in the &lt;code class=&quot;highlighter-rouge&quot;&gt;SBv2/&lt;/code&gt; folder:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls
+&lt;/span&gt;AppSBTest.cpp                       SBv2_yaml_files/
+CMakeLists.txt                      SingleCableController.cpp
+SBv2_model_payload_rotate_x-z.yaml  SingleCableController.h
+SBv2_model_rotate_x-z.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;AppSBTest.cpp&lt;/code&gt; - This is main program file that will be built and used to run our NTRT program&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CMakeLists.txt&lt;/code&gt; - An NTRT required file that tells the builder script what to compiled&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SBv2_yaml_files/&lt;/code&gt; - Folder containing YAML files used as children for the current level of YAML files&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SBv2_model_rotate_x.yaml &amp;amp; SBv2_model_payload_rotate_x.yaml&lt;/code&gt; - Main YAML files for generating the SBv2 model without or with a payload.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;SingleCableController.cpp/.h&lt;/code&gt; - Implementation files for the test controller used on SBv2 model&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now that we know the basic files and folders used for building our simulation model, let’s quickly run the simulation.&lt;/p&gt;
+
+&lt;p&gt;First let’s make sure we built NTRT properly. Navigate to NTRTsim’s bin folder and run the build script:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;NTRTsim/bin
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./build.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Once it has built successfully, navigate to the SBv2 build folder. The folder structure should be the same as the src folders, but instead in build. Thus:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;NTRTsim/build/dev/jbruce/SBv2/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Within this folder, you will see an AppSBTest executable file and some CMake files and folders. Run the simulation by calling the executable followed by the yaml model you would like to load. Thus for loading the SUPERball v2 model with out a payload, use the following command:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./AppSBTest ../../../../src/dev/jbruce/SBv2/SBv2_model_rotate_x-z.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If all is well, the simulation should appear in a new window and some outputs should appear in your terminal.&lt;/p&gt;
+
+&lt;p&gt;To load the SUPERball v2 model &lt;strong&gt;with&lt;/strong&gt; a pyalod, use the very similar command:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./AppSBTest ../../../../src/dev/jbruce/SBv2/SBv2_model_payload_rotate_x-z.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This shows the power of using YAML. You can load a new modeling into the same simulation environment by just referencing a new YAML model. There are limitation to this, but for small changes to your model YAML should greatly improve development.&lt;/p&gt;</content><author><name></name></author><category term="SBv2" /><category term="NTRT" /><category term="Code" /><category term="Controller" /><summary type="html">This document assumes the reader has a basic understanding of C++, Git, and YAML. Some functions will be explained, but not all concepts or features will be. If you want more information, please refer to the their respective links.</summary></entry><entry><title type="html">Teensy Code Overview</title><link href="http://localhost:4000/2019/07/15/Teensy_Code_SUPERball.html" rel="alternate" type="text/html" title="Teensy Code Overview" /><published>2019-07-15T00:00:22-06:00</published><updated>2019-07-15T00:00:22-06:00</updated><id>http://localhost:4000/2019/07/15/Teensy_Code_SUPERball</id><content type="html" xml:base="http://localhost:4000/2019/07/15/Teensy_Code_SUPERball.html">&lt;blockquote&gt;
   &lt;p&gt;Our source code my be found on GitHub, &lt;a href=&quot;https://github.com/JEB12345/TeensyLC_SBv2&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 
