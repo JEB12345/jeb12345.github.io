@@ -45,7 +45,21 @@ $ git pull
 
 This will switch us to the openwrt-18.06 branch as then pull the latest version.
 
-Now we need to pull all the Omega2 specific "feeds" for our OpenWRT build process. Feeds are the way OpenWRT pulls sources files for particular drivers/programs/features that can be compiled into our image. Run this with in the /source folder (default start folder):
+Now we need to pull all the Omega2 specific "feeds" for our OpenWRT build process. Feeds are the way OpenWRT pulls sources files for particular drivers/programs/features that can be compiled into our image. Run these commands from with in the /source folder (default start folder):
+
+First we need to add our own feed to install the Teensyloader commandline tool. Open the `feeds.config` file. You can use whatever terminal editor you like (e.g. `vim`, `nano`, etc.).
+
+```bash
+$ vim feeds.configure
+```
+
+Now add this line to the end of the file.
+
+```bash
+src-git teensy https://github.com/JEB12345/onion-teensyloader.git;master
+```
+
+Once added, close the `feeds.config` file and run the bash script below.
 
 ```bash
 $ bash scripts/onion-feed-setup.sh

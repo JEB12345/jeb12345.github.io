@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-24T15:33:53-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">SUPERball v2 Documentation</title><subtitle>Basic Documentation for my current work on the SUPERball v2 Project.</subtitle><entry><title type="html">NTRT SUPERball Model</title><link href="http://localhost:4000/2019/07/24/NTRT_SUPERball_Model.html" rel="alternate" type="text/html" title="NTRT SUPERball Model" /><published>2019-07-24T00:00:22-06:00</published><updated>2019-07-24T00:00:22-06:00</updated><id>http://localhost:4000/2019/07/24/NTRT_SUPERball_Model</id><content type="html" xml:base="http://localhost:4000/2019/07/24/NTRT_SUPERball_Model.html">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-08-21T17:48:45-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">SUPERball v2 Documentation</title><subtitle>Basic Documentation for my current work on the SUPERball v2 Project.</subtitle><entry><title type="html">NTRT SUPERball Model</title><link href="http://localhost:4000/2019/07/24/NTRT_SUPERball_Model.html" rel="alternate" type="text/html" title="NTRT SUPERball Model" /><published>2019-07-24T00:00:22-06:00</published><updated>2019-07-24T00:00:22-06:00</updated><id>http://localhost:4000/2019/07/24/NTRT_SUPERball_Model</id><content type="html" xml:base="http://localhost:4000/2019/07/24/NTRT_SUPERball_Model.html">&lt;blockquote&gt;
   &lt;p&gt;This document assumes the reader has a basic understanding of &lt;a href=&quot;http://www.cplusplus.com/doc/tutorial/&quot;&gt;C++&lt;/a&gt;, &lt;a href=&quot;https://git-scm.com/&quot;&gt;Git&lt;/a&gt;, and &lt;a href=&quot;https://ntrtsim.readthedocs.io/en/latest/yaml-model-builder.html&quot;&gt;YAML&lt;/a&gt;. Some functions will be explained, but not all concepts or features will be. If you want more information, please refer to the their respective links.&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -433,7 +433,19 @@ Note: you might have to press enter to see the terminal input.&lt;/p&gt;
 
 &lt;p&gt;This will switch us to the openwrt-18.06 branch as then pull the latest version.&lt;/p&gt;
 
-&lt;p&gt;Now we need to pull all the Omega2 specific “feeds” for our OpenWRT build process. Feeds are the way OpenWRT pulls sources files for particular drivers/programs/features that can be compiled into our image. Run this with in the /source folder (default start folder):&lt;/p&gt;
+&lt;p&gt;Now we need to pull all the Omega2 specific “feeds” for our OpenWRT build process. Feeds are the way OpenWRT pulls sources files for particular drivers/programs/features that can be compiled into our image. Run these commands from with in the /source folder (default start folder):&lt;/p&gt;
+
+&lt;p&gt;First we need to add our own feed to install the Teensyloader commandline tool. Open the &lt;code class=&quot;highlighter-rouge&quot;&gt;feeds.config&lt;/code&gt; file. You can use whatever terminal editor you like (e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;vim&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;nano&lt;/code&gt;, etc.).&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;vim feeds.configure
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now add this line to the end of the file.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;src-git teensy https://github.com/JEB12345/onion-teensyloader.git&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Once added, close the &lt;code class=&quot;highlighter-rouge&quot;&gt;feeds.config&lt;/code&gt; file and run the bash script below.&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bash scripts/onion-feed-setup.sh
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
