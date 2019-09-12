@@ -96,6 +96,9 @@ Omega2p Command (1 byte) | Data Requested | Bytes Sent from Teensy
 
 > As of writing this document, frame work for commands has been setup but only a battery voltage/current data command, BMS shutdown, and a dummy command have been implemented (the actual byte commands are subject to change). I will update the page as new commands are set.
 
+### Placeholder notes
+* Changed LED library from OctoWS2811 to FastLED. In order to get FastLED to compile, I needed to change some variable definitions in SoftwareSerial and DMXSimple libraries. Also removed serial8 ```IMXRT1062``` initialization in SoftwareSerial header. There is only 7 serial ports on the Teensy 4.0
+
 [teensyLC]: https://www.pjrc.com/teensy/teensyLC.html
 [Schematic and Layout]: {% post_url 2019-06-14-Schematic_and_Layout_SUPERball %}
 [platformIO]: https://docs.platformio.org/en/latest/ide/pioide.html

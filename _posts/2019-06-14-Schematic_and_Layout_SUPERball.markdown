@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  "Schematic and Layout For Electronics Board Revision 3"
+title:  "Schematic and Layout For Electronics Board Revision 3.5"
 date:   2019-07-01 09:22:22 -0600
 tags: SBv2 Electronics
 ---
-## Revision 3 - Teensy Mod
+## Revision 3.5 - Teensy Mod
 > You can find the git repo for SUPERball v2 [here][Electronics Github], which houses the schematics and board files for each version of our custom electronics board. Note that this page refers to the "Onion_Teensy_M0" branch. This may or may not be merged with master at some point in the future.
 
-> The project was developed on [KiCAD] v6 as of the writing of this document.
+> The project was developed on [KiCAD] v5.1.4 as of the writing of this document.
 
 This is the third revision of our electronics board for wireless communication and battery power distribution on SUPERball v2. The first and second boards were design steps which each had different issues that made them unusable on the full system. Below is a 3D rendering of the board generated in KiCAD.
 
@@ -18,7 +18,7 @@ This is the third revision of our electronics board for wireless communication a
 Below is a simple (and crude) overview of the schematic connections for the electronics board. The main features are:
 * Battery Monitoring using TI's [**bq76930**][bq76930] chip for power and individual cell monitoring of our 6S battery pack
 * Step down power from pack voltage to 5V then from 5V to 3.3V using TI's [**lmzm23601**][lmzm23601] and [**lp3965**][lp3965], respectively.
-* Main real time communication and processing using a [**Teensy LC**][teensyLC]
+* Main real time communication and processing using a [**Teensy 4.0**][teensy40]
 * Onion's [**Omega2p**][omega2p] as our WiFi to Ethernet bridge and ROS node
   - Serial to USB communication for debugging for the Omeag2p was based on Omega's [schematics][onion schematic] using Silicon Labs' [**CP2102N**][cp2102n] chip.
 * Wireless safety switch utilizing a custom layout of Nordic's [**nRF24L01p**][nRF24] chip controlled by a dedicated [**ATSAMD21E**][atsamd21e] M0 micro controller.
@@ -31,11 +31,11 @@ PDFs of the actual KiCAD schematics can be found in the GitHub repo [here][PDFs]
 
 The layout of the board has some unique constraints based on the design of SUPERball v2's Omni-directional holder and location of the board. The main driving parameter of the Omni-directional holder design was to make a strong an lightweight component, electronic form factor, IC component placement, and mounting were then driven by these design choices. The main constraints driven are:
 * The board must allow for access to the batter compartment, thus a center cutout on the board.
-* All through-hole parts must be mounted on the top (SOFTBALL) side of the board or within the flaired cavities if they are mounted on the bottom, so that they do not interfere with the function of the Omni-directional routers.
+* All through-hole parts must be mounted on the top (SOFTBALL) side of the board or within the flaired cavities (if they are mounted on the bottom), so that they do not interfere with the function of the Omni-directional routers.
 * The SOFTBALL end effector limits the amount the board may extend beyond the Omni-directional holder to 100mm in diameter.
 * At least a 3mm gap is needed between the electronic board's edge and the Omni-directional holder to allow for a 3D printed cover to seal the electronics from outdoor elements.
 
-The design of the electronic board layout taking into account these contraints my be seen in the image below. The white outline is a 2D projection of the top of an Omni-directional holder. the yellow is the board outline.
+The design of the electronic board taking into account these contraints my be seen in the image below. The white outline is a 2D projection of the top of an Omni-directional holder. the yellow is the board outline.
 
 ![full layout](/assets/img/Layout_with_Omni_Outline.png "All layers displayed with Omni Holder Outline")
 
@@ -43,9 +43,11 @@ The design of the electronic board layout taking into account these contraints m
 
 ### Top of the Board and Top layer
 
-The top of the electronics board houses the Omega2p, Teensy LC, nRF24L01P, 2.4 GHz antennas, step down converters for 5 and 3.3 volts, communication connector to the SOFTBALL sensor and String LEDs, as well as the buzzer.
+The top of the electronics board houses the Omega2p, Teensy 4.0, nRF24L01P, 2.4 GHz antennas, step down converters for 5 and 3.3 volts, communication connector to the SOFTBALL sensor and String LEDs, as well as the buzzer.
 
 Technically, the ethernet port is also mounted on this side. However, the port housing goes through a hole in the board and the connection is on the bottom side.
+
+> Note that the Unpopulated USB Port next to eh Omega2p is an optional vertical USB micro port that could be used later to remote program the Teensy 4.0. As of now, it is not used.
 
 ![Top Render with Text](/assets/img/Main_Board_Top_with_Text.png "3D render of electronic board top with Omega and Teensy")
 
@@ -69,7 +71,7 @@ The middle layers going towards the bottom layer from the top are a power plane 
 
 ### Bottom of the Board and Bottom layer
 
-The bottom of the electronics board houses the battery monitor circuit, battery power connector, Hebi power connectors, the entry for the Ethernet connector, sensor board connector, M0 microcontroller with SWD programming connector, as well as a backup 3.3 volt input connector.
+The bottom of the electronics board houses the battery monitor circuit, battery power connector, Hebi power connectors, the entry for the Ethernet connector, sensor board connector, M0 microcontroller with SWD programming connector, as well as the power switch input connector.
 
 ![Bottom Render with Text](/assets/img/Main_Board_Bottom_with_Text.png "3D render of electronic board bottom")
 
@@ -77,14 +79,14 @@ The majority of these connectors are grouped to fit within the "flared" openings
 
 ![Bottom Copper Layer](/assets/img/layout_bottom.png "PCB layout of Bottom Copper Layer")
 
-> Note: The 3D render and the CAD copper render are flipped from each other. When using PCB CAD programs, they will render the bottom layer as viewed from the top layer. This is looking at it with all other layers above removed. 
+> Note: The 3D render and the CAD copper render are flipped from each other. When using PCB CAD programs, they will render the bottom layer as viewed from the top layer. This is looking at it with all other layers above removed.
 
 [Electronics Github]: https://github.com/JEB12345/superball_v2_electronics/tree/Onion_Teensy_M0
 [KiCAD]: http://www.kicad-pcb.org/
 [bq76930]: https://www.ti.com/lit/ds/symlink/bq76930.pdf
 [lmzm23601]: http://www.ti.com/lit/ds/symlink/lmzm23601.pdf
 [lp3965]: https://www.ti.com/lit/ds/symlink/lp3965.pdf
-[teensyLC]: https://www.pjrc.com/teensy/teensyLC.html
+[teensy40]: https://www.pjrc.com/store/teensy40.html
 [omega2p]: https://docs.onion.io/omega2-docs/omega2p.html
 [onion schematic]: https://github.com/OnionIoT/Onion-Hardware/blob/master/Schematics/Omega-Expansion-Dock.pdf
 [cp2102n]: http://www.silabs.com/support%20documents/technicaldocs/cp2102n-datasheet.pdf
