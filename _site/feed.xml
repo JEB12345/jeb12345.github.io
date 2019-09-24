@@ -1,4 +1,127 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-09-12T14:29:19-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">SUPERball v2 Documentation</title><subtitle>Basic Documentation for my current work on the SUPERball v2 Project.</subtitle><entry><title type="html">NTRT SUPERball Model</title><link href="http://localhost:4000/2019/07/24/NTRT_SUPERball_Model.html" rel="alternate" type="text/html" title="NTRT SUPERball Model" /><published>2019-07-24T00:00:22-06:00</published><updated>2019-07-24T00:00:22-06:00</updated><id>http://localhost:4000/2019/07/24/NTRT_SUPERball_Model</id><content type="html" xml:base="http://localhost:4000/2019/07/24/NTRT_SUPERball_Model.html">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-09-24T11:32:15-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">SUPERball v2 Documentation</title><subtitle>Basic Documentation for my current work on the SUPERball v2 Project.</subtitle><entry><title type="html">Teensy Code Overview</title><link href="http://localhost:4000/2019/09/24/Teensy_Code_SUPERball.html" rel="alternate" type="text/html" title="Teensy Code Overview" /><published>2019-09-24T00:00:22-06:00</published><updated>2019-09-24T00:00:22-06:00</updated><id>http://localhost:4000/2019/09/24/Teensy_Code_SUPERball</id><content type="html" xml:base="http://localhost:4000/2019/09/24/Teensy_Code_SUPERball.html">&lt;blockquote&gt;
+  &lt;p&gt;Our source code my be found on GitHub, &lt;a href=&quot;https://github.com/JEB12345/Teensy40_SBv2&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;teensy-40&quot;&gt;Teensy 4.0&lt;/h3&gt;
+
+&lt;p&gt;The Teensy 4.0 is an extremely fast and powerful version of the Teensy line of microcontrollers from PJRC. It utilizes a 600Mhz ARM Cortex-M7 with multiple pin out for hardware peripherals in a relatively small form factor. More information on the Teensy 4.0 can be found on PJRC’s website &lt;a href=&quot;https://www.pjrc.com/store/teensy40.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Refer to the &lt;a href=&quot;/2019/07/01/Schematic_and_Layout_SUPERball.html&quot;&gt;Schematic and Layout page&lt;/a&gt; for how the Teensy 4.0 chip is electrically integrated into our electronics board.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;features&quot;&gt;Features&lt;/h3&gt;
+
+&lt;p&gt;The Teensy 4.0 is our main real time microcontroller for the main board on SUPERball v2. It’s main processes are:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The companion processor to the battery monitor circuit&lt;/li&gt;
+  &lt;li&gt;Reading data from our sensor board located lower on SUPERball v2’s rods&lt;/li&gt;
+  &lt;li&gt;Reading data from our SOFTBALL pressure sensor&lt;/li&gt;
+  &lt;li&gt;Communicating data to the Omega2p through a standard UART connection&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The code’s main loop runs every 1ms (1kHz) with plenty of extra process cycles to perform faster processing if needed outside of the main loop.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Currently, not all features have been implemented in code. I will try to update the page as more features are implemented.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;code-environment&quot;&gt;Code Environment&lt;/h3&gt;
+
+&lt;p&gt;The code has been developed using the Teensyduino library (Arduino for Teensy) under the PlatoformIO development environment. This uses the C++ style of the Arduino language and is a bit different in compilation than a standard INO style code.&lt;/p&gt;
+
+&lt;p&gt;Information about PlatoformIO can be found &lt;a href=&quot;https://docs.platformio.org/en/latest/ide/pioide.html&quot;&gt;here&lt;/a&gt;, and the Teensy configuration can be found &lt;a href=&quot;https://docs.platformio.org/en/latest/platforms/teensy.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Note: that I used the &lt;a href=&quot;https://docs.platformio.org/en/latest/ide/vscode.html#ide-vscode&quot;&gt;Visual Studio Code&lt;/a&gt; variation of PlatformIO. However, any variation of the IDE may be used.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Our source code my be found on GitHub, &lt;a href=&quot;https://github.com/JEB12345/Teensy40_SBv2&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Using Arduino and Teensyduino allows for a multitude of open source libraries to be used directly or modified and has sped up development. The libraries used are listed below:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.arduino.cc/reference/en/&quot;&gt;Arduino&lt;/a&gt;/&lt;a href=&quot;https://www.pjrc.com/teensy/teensyduino.html&quot;&gt;Teensyduino&lt;/a&gt;, this provides basic microcontroller functions to all Arduino compatible chips&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.pjrc.com/teensy/td_timing_IntervalTimer.html&quot;&gt;IntervalTimer&lt;/a&gt;, interrupt based library to call a function at some microsecond based interval&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/bakercp/PacketSerial&quot;&gt;PacketSerial&lt;/a&gt;, packet-based serial communication using the &lt;a href=&quot;https://en.wikipedia.org/wiki/Consistent_Overhead_Byte_Stuffing&quot;&gt;COBS&lt;/a&gt; encoding format&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://learn.adafruit.com/adafruit-neopixel-uberguide/&quot;&gt;Adafruit NeoPixel&lt;/a&gt;, A library for various single wire chain-able RGB LEDs (WS2812, WS2811 and SK6812)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/LibreSolar/bq769x0_ArduinoLibrary&quot;&gt;bq769x0 Arduino Library (modified)&lt;/a&gt;, This is the original code, however we use a heavily modified variant to support the Teensy’s faster I2C library and CRC checking. Our version is &lt;a href=&quot;https://github.com/JEB12345/Teensy40_SBv2/blob/master/src/bq769x0CRC.cpp&quot;&gt;packaged with the Project’s source code&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;timing-loop&quot;&gt;Timing loop&lt;/h3&gt;
+
+&lt;p&gt;As stated earlier, most functions will run at a 1ms (1kHz) timing loop. A simple custom library called &lt;a href=&quot;https://github.com/JEB12345/Teensy40_SBv2/blob/master/src/timer.cpp&quot;&gt;&lt;strong&gt;timer&lt;/strong&gt;&lt;/a&gt; initializes an &lt;strong&gt;IntervalTimer&lt;/strong&gt; instance and calls a function to increase a counter every 1ms. The main loop of our program then checks to see if the previously saved count is not equal to the current count (set by our interrupt timing function). If valid, then the main loop will run. Functions that should run slower than 1ms (at 1ms intervals) should use a conditional modulo statement on the current 1ms count.&lt;/p&gt;
+
+&lt;p&gt;Below is a sample of our main loop blinking an LED every 500ms:&lt;/p&gt;
+
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;n&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;loop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;cm&quot;&gt;/*
+   * Everythin in this if statement will run at 1ms
+   * Make sure all tasks take less than 1ms
+   * If you want to run something slower than 1ms,
+   * create an if statement and modulo systime with
+   * the multiple of 1ms delay you want the task to run
+   * e.g. if(timer_state.systime % 500 == 0) for a 500ms loop
+   */&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;timer_state&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;.systime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;timer_state&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;.prev_systime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;noInterrupts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;timer_state&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;.prev_systime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;timer_state&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;.systime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;interrupts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;timer_state&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;.systime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;c&quot;&gt;// Status LED&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;ledState&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ledState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nf&quot;&gt;digitalWrite&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ledPin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ledState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;cm&quot;&gt;/*
+   * Put tasks that should run as fast as possible here
+   * Limit this to only a few tasks if possible
+   */&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;serial-communication&quot;&gt;Serial communication&lt;/h3&gt;
+
+&lt;p&gt;Serial communication, specifically two wire &lt;a href=&quot;https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter&quot;&gt;UART&lt;/a&gt;, was chosen as the method to relay data to our Omega2p board since both SPI and I2C had various application specific complications rendering them not as useful as Serial.&lt;/p&gt;
+
+&lt;p&gt;On top of the Serial communication, a &lt;a href=&quot;https://en.wikipedia.org/wiki/Consistent_Overhead_Byte_Stuffing&quot;&gt;COBS&lt;/a&gt; encoding protocol library (PacketSerial) is used to allow for arbitrary length data packets across the asynchronous communication lines. Please refer to the arduino library’s &lt;a href=&quot;https://github.com/bakercp/PacketSerial&quot;&gt;GitHub page&lt;/a&gt; for a good write up on how and why this is used.&lt;/p&gt;
+
+&lt;p&gt;In order to get data from the Teensy, the Omega2p board will send a simple 1 Byte command corresponding to a predetermined data type (using a COBS compatible protocol, e.g. pySerial + cobs). The Teensy will then reply with current data for the commanded data type. This is very similar to how most IC sensor chips relay data to a host microcontroller.&lt;/p&gt;
+
+&lt;p&gt;Below are some data commands:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Omega2p Command (1 byte)&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Data Requested&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Bytes Sent from Teensy&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0x01&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Battery Voltage &amp;amp; Current&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;br /&gt;(2-voltage + 2-current)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0x14&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Dummy Command&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0xFF&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Battery Management Shutdown&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;As of writing this document, frame work for commands has been setup but only a battery voltage/current data command, BMS shutdown, and a dummy command have been implemented (the actual byte commands are subject to change). I will update the page as new commands are set.&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name></name></author><category term="SBv2" /><category term="Electronics" /><category term="Code" /><summary type="html">Our source code my be found on GitHub, here.</summary></entry><entry><title type="html">NTRT SUPERball Model</title><link href="http://localhost:4000/2019/07/24/NTRT_SUPERball_Model.html" rel="alternate" type="text/html" title="NTRT SUPERball Model" /><published>2019-07-24T00:00:22-06:00</published><updated>2019-07-24T00:00:22-06:00</updated><id>http://localhost:4000/2019/07/24/NTRT_SUPERball_Model</id><content type="html" xml:base="http://localhost:4000/2019/07/24/NTRT_SUPERball_Model.html">&lt;blockquote&gt;
   &lt;p&gt;This document assumes the reader has a basic understanding of &lt;a href=&quot;http://www.cplusplus.com/doc/tutorial/&quot;&gt;C++&lt;/a&gt;, &lt;a href=&quot;https://git-scm.com/&quot;&gt;Git&lt;/a&gt;, and &lt;a href=&quot;https://ntrtsim.readthedocs.io/en/latest/yaml-model-builder.html&quot;&gt;YAML&lt;/a&gt;. Some functions will be explained, but not all concepts or features will be. If you want more information, please refer to the their respective links.&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -83,135 +206,7 @@ SBv2_model_rotate_x-z.yaml
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./AppSBTest ../../../../src/dev/jbruce/SBv2/SBv2_model_payload_rotate_x-z.yaml
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;This shows the power of using YAML. You can load a new modeling into the same simulation environment by just referencing a new YAML model. There are limitation to this, but for small changes to your model YAML should greatly improve development.&lt;/p&gt;</content><author><name></name></author><category term="SBv2" /><category term="NTRT" /><category term="Code" /><category term="Controller" /><summary type="html">This document assumes the reader has a basic understanding of C++, Git, and YAML. Some functions will be explained, but not all concepts or features will be. If you want more information, please refer to the their respective links.</summary></entry><entry><title type="html">Teensy Code Overview</title><link href="http://localhost:4000/2019/07/15/Teensy_Code_SUPERball.html" rel="alternate" type="text/html" title="Teensy Code Overview" /><published>2019-07-15T00:00:22-06:00</published><updated>2019-07-15T00:00:22-06:00</updated><id>http://localhost:4000/2019/07/15/Teensy_Code_SUPERball</id><content type="html" xml:base="http://localhost:4000/2019/07/15/Teensy_Code_SUPERball.html">&lt;blockquote&gt;
-  &lt;p&gt;Our source code my be found on GitHub, &lt;a href=&quot;https://github.com/JEB12345/TeensyLC_SBv2&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;teensy-lc&quot;&gt;Teensy LC&lt;/h3&gt;
-
-&lt;p&gt;The Teensy LC is the low cost variant of the Teensy line of microcontrollers from PJRC. It utilizes a 48Mhz ARM Cortex-M0 with multiple pin out for hardware peripherals in a relatively small form factor. More information on the Teensy LC can be found on PJRC’s website &lt;a href=&quot;https://www.pjrc.com/teensy/teensyLC.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Refer to the &lt;a href=&quot;/2019/07/01/Schematic_and_Layout_SUPERball.html&quot;&gt;Schematic and Layout page&lt;/a&gt; for how the Teensy LC chip is electrically integrated into our electronics board.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;features&quot;&gt;Features&lt;/h3&gt;
-
-&lt;p&gt;The Teensy LC is our main real time microcontroller for the main board on SUPERball v2. It’s main processes are:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;The companion processor to the battery monitor circuit&lt;/li&gt;
-  &lt;li&gt;Reading data from our sensor board located lower on SUPERball v2’s rods&lt;/li&gt;
-  &lt;li&gt;Reading data from our SOFTBALL pressure sensor&lt;/li&gt;
-  &lt;li&gt;Communicating data to the Omega2p through a standard UART connection&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The code’s main loop runs every 10ms (100Hz), which is limited by the speed of the Teensy 48MHz processor. If this becomes a limitation, the loop speed can be increased. However, 1ms (1kHz) is too fast for the processor and the routines being run.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Currently, not all features have been implemented in code. I will try to update the page as more features are implemented.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;code-environment&quot;&gt;Code Environment&lt;/h3&gt;
-
-&lt;p&gt;The code has been developed using the Teensyduino library (Arduino for Teensy) under the PlatoformIO development environment. This uses the C++ style of the Arduino language and is a bit different in compilation than a standard INO style code.&lt;/p&gt;
-
-&lt;p&gt;Information about PlatoformIO can be found &lt;a href=&quot;https://docs.platformio.org/en/latest/ide/pioide.html&quot;&gt;here&lt;/a&gt;, and the Teensy configuration can be found &lt;a href=&quot;https://docs.platformio.org/en/latest/platforms/teensy.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Note: that I used the &lt;a href=&quot;https://docs.platformio.org/en/latest/ide/vscode.html#ide-vscode&quot;&gt;Visual Studio Code&lt;/a&gt; variation of PlatformIO. However, any variation of the IDE may be used.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Our source code my be found on GitHub, &lt;a href=&quot;https://github.com/JEB12345/TeensyLC_SBv2&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Using Arduino and Teensyduino allows for a multitude of open source libraries to be used directly or modified and has sped up development. The libraries used are listed below:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.arduino.cc/reference/en/&quot;&gt;Arduino&lt;/a&gt;/&lt;a href=&quot;https://www.pjrc.com/teensy/teensyduino.html&quot;&gt;Teensyduino&lt;/a&gt;, this provides basic microcontroller functions to all Arduino compatible chips&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.pjrc.com/teensy/td_timing_IntervalTimer.html&quot;&gt;IntervalTimer&lt;/a&gt;, interrupt based library to call a function at some microsecond based interval&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/bakercp/PacketSerial&quot;&gt;PacketSerial&lt;/a&gt;, packet-based serial communication using the &lt;a href=&quot;https://en.wikipedia.org/wiki/Consistent_Overhead_Byte_Stuffing&quot;&gt;COBS&lt;/a&gt; encoding format&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.pjrc.com/teensy/td_libs_OctoWS2811.html&quot;&gt;OctoWS2811&lt;/a&gt;, high performance library for various single wire chain-able RGB LEDs&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/LibreSolar/bq769x0_ArduinoLibrary&quot;&gt;bq769x0 Arduino Library (modified)&lt;/a&gt;, This is the original code, however we use a heavily modified variant to support the Teensy’s faster I2C library and CRC checking. Our version is &lt;a href=&quot;https://github.com/JEB12345/TeensyLC_SBv2/blob/master/src/bq769x0CRC.cpp&quot;&gt;packaged with the Project’s source code&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;timing-loop&quot;&gt;Timing loop&lt;/h3&gt;
-
-&lt;p&gt;As stated earlier, most functions will run at a 10ms (100Hz) timing loop. A simple custom library called &lt;a href=&quot;https://github.com/JEB12345/TeensyLC_SBv2/blob/master/src/timer.cpp&quot;&gt;&lt;strong&gt;timer&lt;/strong&gt;&lt;/a&gt; initializes an &lt;strong&gt;IntervalTimer&lt;/strong&gt; instance and calls a function to increase a counter every 10ms. The main loop of our program then checks to see if the previously saved count is not equal to the current count (set by our interrupt timing function). If valid, then the main loop will run. Functions that should run slower than 10ms (at 10ms intervals) should use a conditional modulo statement on the current 10ms count.&lt;/p&gt;
-
-&lt;p&gt;Below is a sample of our main loop blinking an LED every 500ms:&lt;/p&gt;
-
-&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;n&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;loop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-   &lt;span class=&quot;cm&quot;&gt;/*
-   * Everythin in this if statement will run at 10ms
-   * Make sure all tasks take less than 10ms
-   * If you want to run something slower than 10ms,
-   * create an if statement and modulo systime with
-   * the multiple of 10ms delay you want the task to run
-   * e.g. if(timer_state.systime % 50 == 0) for a 500ms loop
-   */&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;timer_state&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;.systime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;timer_state&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;.prev_systime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;noInterrupts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;timer_state&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;.prev_systime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;timer_state&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;.systime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nf&quot;&gt;interrupts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;timer_state&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;.systime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;c&quot;&gt;// Status LED&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;ledState&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ledState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;nf&quot;&gt;digitalWrite&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ledPin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ledState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;cm&quot;&gt;/*
-   * Put tasks that should run as fast as possible here
-   * Limit this to only a few tasks if possible
-   */&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;serial-communication&quot;&gt;Serial communication&lt;/h3&gt;
-
-&lt;p&gt;Serial communication, specifically two wire &lt;a href=&quot;https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter&quot;&gt;UART&lt;/a&gt;, was chosen as the method to relay data to our Omega2p board since both SPI and I2C had various complications rendering them not as useful as Serial.&lt;/p&gt;
-
-&lt;p&gt;On top of the Serial communication, a &lt;a href=&quot;https://en.wikipedia.org/wiki/Consistent_Overhead_Byte_Stuffing&quot;&gt;COBS&lt;/a&gt; encoding protocol library (PacketSerial) is used to allow for arbitrary length data packets across the asynchronous communication lines. Please refer to the arduino library’s &lt;a href=&quot;https://github.com/bakercp/PacketSerial&quot;&gt;GitHub page&lt;/a&gt; for a good write up on how and why this is used.&lt;/p&gt;
-
-&lt;p&gt;In order to get data from the Teensy, the Omega2p board will send a simple 1 Byte command corresponding to a predetermined data type (using a COBS compatible protocol, e.g. pySerial + cobs). The Teensy will then reply with current data for the commanded data type. This is very similar to how most IC sensor chips relay data to a host microcontroller.&lt;/p&gt;
-
-&lt;p&gt;Below are some data commands:&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Omega2p Command (1 byte)&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Data Requested&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Bytes Sent from Teensy&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0x01&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Battery Voltage &amp;amp; Current&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;br /&gt;(2-voltage + 2-current)&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0x14&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Dummy Command&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0xFF&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Battery Management Shutdown&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;As of writing this document, frame work for commands has been setup but only a battery voltage/current data command, BMS shutdown, and a dummy command have been implemented (the actual byte commands are subject to change). I will update the page as new commands are set.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;placeholder-notes&quot;&gt;Placeholder notes&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Changed LED library from OctoWS2811 to FastLED. In order to get FastLED to compile, I needed to change some variable definitions in SoftwareSerial and DMXSimple libraries. Also removed serial8 &lt;code class=&quot;highlighter-rouge&quot;&gt;IMXRT1062&lt;/code&gt; initialization in SoftwareSerial header. There is only 7 serial ports on the Teensy 4.0&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="SBv2" /><category term="Electronics" /><category term="Code" /><summary type="html">Our source code my be found on GitHub, here.</summary></entry><entry><title type="html">Schematic and Layout For Electronics Board Revision 3.5</title><link href="http://localhost:4000/2019/07/01/Schematic_and_Layout_SUPERball.html" rel="alternate" type="text/html" title="Schematic and Layout For Electronics Board Revision 3.5" /><published>2019-07-01T09:22:22-06:00</published><updated>2019-07-01T09:22:22-06:00</updated><id>http://localhost:4000/2019/07/01/Schematic_and_Layout_SUPERball</id><content type="html" xml:base="http://localhost:4000/2019/07/01/Schematic_and_Layout_SUPERball.html">&lt;h2 id=&quot;revision-35---teensy-mod&quot;&gt;Revision 3.5 - Teensy Mod&lt;/h2&gt;
+&lt;p&gt;This shows the power of using YAML. You can load a new modeling into the same simulation environment by just referencing a new YAML model. There are limitation to this, but for small changes to your model YAML should greatly improve development.&lt;/p&gt;</content><author><name></name></author><category term="SBv2" /><category term="NTRT" /><category term="Code" /><category term="Controller" /><summary type="html">This document assumes the reader has a basic understanding of C++, Git, and YAML. Some functions will be explained, but not all concepts or features will be. If you want more information, please refer to the their respective links.</summary></entry><entry><title type="html">Schematic and Layout For Electronics Board Revision 3.5</title><link href="http://localhost:4000/2019/07/01/Schematic_and_Layout_SUPERball.html" rel="alternate" type="text/html" title="Schematic and Layout For Electronics Board Revision 3.5" /><published>2019-07-01T09:22:22-06:00</published><updated>2019-07-01T09:22:22-06:00</updated><id>http://localhost:4000/2019/07/01/Schematic_and_Layout_SUPERball</id><content type="html" xml:base="http://localhost:4000/2019/07/01/Schematic_and_Layout_SUPERball.html">&lt;h2 id=&quot;revision-35---teensy-mod&quot;&gt;Revision 3.5 - Teensy Mod&lt;/h2&gt;
 &lt;blockquote&gt;
   &lt;p&gt;You can find the git repo for SUPERball v2 &lt;a href=&quot;https://github.com/JEB12345/superball_v2_electronics/tree/Onion_Teensy_M0&quot;&gt;here&lt;/a&gt;, which houses the schematics and board files for each version of our custom electronics board. Note that this page refers to the “Onion_Teensy_M0” branch. This may or may not be merged with master at some point in the future.&lt;/p&gt;
 &lt;/blockquote&gt;
