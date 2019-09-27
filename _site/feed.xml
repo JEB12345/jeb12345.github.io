@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-09-24T11:32:15-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">SUPERball v2 Documentation</title><subtitle>Basic Documentation for my current work on the SUPERball v2 Project.</subtitle><entry><title type="html">Teensy Code Overview</title><link href="http://localhost:4000/2019/09/24/Teensy_Code_SUPERball.html" rel="alternate" type="text/html" title="Teensy Code Overview" /><published>2019-09-24T00:00:22-06:00</published><updated>2019-09-24T00:00:22-06:00</updated><id>http://localhost:4000/2019/09/24/Teensy_Code_SUPERball</id><content type="html" xml:base="http://localhost:4000/2019/09/24/Teensy_Code_SUPERball.html">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-09-27T16:54:07-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">SUPERball v2 Documentation</title><subtitle>Basic Documentation for my current work on the SUPERball v2 Project.</subtitle><entry><title type="html">Teensy Code Overview</title><link href="http://localhost:4000/2019/09/24/Teensy_Code_SUPERball.html" rel="alternate" type="text/html" title="Teensy Code Overview" /><published>2019-09-24T00:00:22-06:00</published><updated>2019-09-24T00:00:22-06:00</updated><id>http://localhost:4000/2019/09/24/Teensy_Code_SUPERball</id><content type="html" xml:base="http://localhost:4000/2019/09/24/Teensy_Code_SUPERball.html">&lt;blockquote&gt;
   &lt;p&gt;Our source code my be found on GitHub, &lt;a href=&quot;https://github.com/JEB12345/Teensy40_SBv2&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&quot;teensy-40&quot;&gt;Teensy 4.0&lt;/h3&gt;
 
-&lt;p&gt;The Teensy 4.0 is an extremely fast and powerful version of the Teensy line of microcontrollers from PJRC. It utilizes a 600Mhz ARM Cortex-M7 with multiple pin out for hardware peripherals in a relatively small form factor. More information on the Teensy 4.0 can be found on PJRC’s website &lt;a href=&quot;https://www.pjrc.com/store/teensy40.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The Teensy 4.0 is an extremely fast and powerful version of the Teensy line of microcontrollers from PJRC. It utilizes a 600Mhz ARM Cortex-M7 with multiple pin outs for hardware peripherals in a relatively small form factor. More information on the Teensy 4.0 can be found on PJRC’s website &lt;a href=&quot;https://www.pjrc.com/store/teensy40.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Refer to the &lt;a href=&quot;/2019/07/01/Schematic_and_Layout_SUPERball.html&quot;&gt;Schematic and Layout page&lt;/a&gt; for how the Teensy 4.0 chip is electrically integrated into our electronics board.&lt;/p&gt;
@@ -107,6 +107,21 @@
       &lt;td style=&quot;text-align: center&quot;&gt;4&lt;br /&gt;(2-voltage + 2-current)&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0x02&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Color Sensor Data from External Board&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0x0D&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Remote Kill Switch Enabled&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;br /&gt;(No data sent back)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0x00&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Remote Kill Switch Disabled&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;br /&gt;(No data sent back)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0x14&lt;/code&gt;&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Dummy Command&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
@@ -114,13 +129,13 @@
     &lt;tr&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0xFF&lt;/code&gt;&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;Battery Management Shutdown&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;br /&gt;(No data sent back)&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;As of writing this document, frame work for commands has been setup but only a battery voltage/current data command, BMS shutdown, and a dummy command have been implemented (the actual byte commands are subject to change). I will update the page as new commands are set.&lt;/p&gt;
+  &lt;p&gt;As of writing this document, frame work for commands has been setup (the actual byte commands are subject to change). I will update the page as new commands are set.&lt;/p&gt;
 &lt;/blockquote&gt;</content><author><name></name></author><category term="SBv2" /><category term="Electronics" /><category term="Code" /><summary type="html">Our source code my be found on GitHub, here.</summary></entry><entry><title type="html">NTRT SUPERball Model</title><link href="http://localhost:4000/2019/07/24/NTRT_SUPERball_Model.html" rel="alternate" type="text/html" title="NTRT SUPERball Model" /><published>2019-07-24T00:00:22-06:00</published><updated>2019-07-24T00:00:22-06:00</updated><id>http://localhost:4000/2019/07/24/NTRT_SUPERball_Model</id><content type="html" xml:base="http://localhost:4000/2019/07/24/NTRT_SUPERball_Model.html">&lt;blockquote&gt;
   &lt;p&gt;This document assumes the reader has a basic understanding of &lt;a href=&quot;http://www.cplusplus.com/doc/tutorial/&quot;&gt;C++&lt;/a&gt;, &lt;a href=&quot;https://git-scm.com/&quot;&gt;Git&lt;/a&gt;, and &lt;a href=&quot;https://ntrtsim.readthedocs.io/en/latest/yaml-model-builder.html&quot;&gt;YAML&lt;/a&gt;. Some functions will be explained, but not all concepts or features will be. If you want more information, please refer to the their respective links.&lt;/p&gt;
 &lt;/blockquote&gt;

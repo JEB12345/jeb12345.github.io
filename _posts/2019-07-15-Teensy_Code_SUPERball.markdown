@@ -9,7 +9,7 @@ tags: SBv2 Electronics Code
 
 ### Teensy 4.0
 
-The Teensy 4.0 is an extremely fast and powerful version of the Teensy line of microcontrollers from PJRC. It utilizes a 600Mhz ARM Cortex-M7 with multiple pin out for hardware peripherals in a relatively small form factor. More information on the Teensy 4.0 can be found on PJRC's website [here][teensy40].
+The Teensy 4.0 is an extremely fast and powerful version of the Teensy line of microcontrollers from PJRC. It utilizes a 600Mhz ARM Cortex-M7 with multiple pin outs for hardware peripherals in a relatively small form factor. More information on the Teensy 4.0 can be found on PJRC's website [here][teensy40].
 
 > Refer to the [Schematic and Layout page][Schematic and Layout] for how the Teensy 4.0 chip is electrically integrated into our electronics board.
 
@@ -91,10 +91,13 @@ Below are some data commands:
 Omega2p Command (1 byte) | Data Requested | Bytes Sent from Teensy
 :---: | :---: | :---:
 `0x01` | Battery Voltage & Current | 4<br/>(2-voltage + 2-current)
+`0x02`  | Color Sensor Data from External Board  | 8
+`0x0D`  | Remote Kill Switch Enabled  | 0<br/>(No data sent back)
+`0x00`  | Remote Kill Switch Disabled  | 0<br/>(No data sent back)
 `0x14`  | Dummy Command | 2
-`0xFF`  | Battery Management Shutdown | 0
+`0xFF`  | Battery Management Shutdown | 0<br/>(No data sent back)
 
-> As of writing this document, frame work for commands has been setup but only a battery voltage/current data command, BMS shutdown, and a dummy command have been implemented (the actual byte commands are subject to change). I will update the page as new commands are set.
+> As of writing this document, frame work for commands has been setup (the actual byte commands are subject to change). I will update the page as new commands are set.
 
 
 [teensy40]: https://www.pjrc.com/store/teensy40.html
